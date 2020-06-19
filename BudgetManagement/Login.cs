@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,6 +24,8 @@ namespace BudgetManagement
             InitializeComponent();
             Init();
             AdditionUI();
+            Connection.Connect();
+
         }
 
         protected override CreateParams CreateParams
@@ -58,6 +62,7 @@ namespace BudgetManagement
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.BackColor = Color.FromArgb(243, 249, 254);
         }
+
         private void exitBtn_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -66,17 +71,32 @@ namespace BudgetManagement
         private bool checkUsername()
         {
             // trùng username
+            if (this.SignupUsername.Text == "") return false;
+            string selectString = $"SELECT * FROM users WHERE username = '{this.SignupUsername.Text}'";
+            SqlDataReader reader = Connection.Select(selectString);
+            try
+            {
+                reader.Read();
+                string username = reader["username"].ToString();
+                if (username == this.SignupUsername.Text) return false;
+            }
+            catch
+            {
+                return true;
+            }
             return true;
         }
 
         private bool checkEmail()
         {
+            if (this.SignupEmail.Text == "") return false;
             return (new EmailAddressAttribute().IsValid(this.SignupEmail.Text));
         }
 
         private bool checkPassword()
         {
             string password = this.SignupPassword.Text;
+            if (password == "") return false;
             if (password.Length < 8) return false;
             if (password.Contains(" ")) return false;
             return true;
@@ -84,13 +104,28 @@ namespace BudgetManagement
         private void signupBtn_Click(object sender, EventArgs e)
         {
             ClearError();
-            if(!checkUsername()) this.SignupUsernameError.Text="Username duplicated";
-            if(!checkEmail()) this.SignupEmailError.Text = "Email invalid";
-            if(!checkPassword()) this.SignupPasswordError.Text = "Password must at least 8 chars, not contains spaces";
+            if (!checkUsername()) this.SignupUsernameError.Text = "Username duplicated";
+            if (!checkEmail()) this.SignupEmailError.Text = "Email invalid";
+            if (!checkPassword()) this.SignupPasswordError.Text = "Password must at least 8 chars, not contains spaces";
             isChecked = checkUsername() && checkEmail() && checkPassword();
             if (isChecked)
             {
                 //INSERT DATABASE
+                // Hash
+                var hashedPassword = SecurePasswordHasher.Hash("mypassword");
+                // Verify
+                //var result = SecurePasswordHasher.Verify("mypassword", hash);
+                string insertString = $"INSERT INTO users VALUES (" +
+                    $"'{this.SignupUsername.Text}'," +
+                    $"'{this.SignupEmail.Text}'," +
+                    $"'{hashedPassword}')";
+                Connection.Insert(insertString);
+                MessageBox.Show(
+                    "You have been registered!!!",
+                    "Success",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
             }
         }
     }
