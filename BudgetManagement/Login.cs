@@ -18,6 +18,9 @@ namespace BudgetManagement
 
         private bool isChecked = false;
         private const int CS_DROPSHADOW = 0x00020000;
+        private bool isSignupEyeClicked = false;
+        private bool isLoginEyeClicked = false;
+
 
         public login()
         {
@@ -126,6 +129,35 @@ namespace BudgetManagement
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
                 );
+            }
+        }
+
+        private void SignupShowPasswordBtn_Click(object sender, EventArgs e)
+        {
+            if (!isSignupEyeClicked)
+            {
+                this.SignupPassword.PasswordChar = '\0';
+                isSignupEyeClicked = true;
+            }
+            else
+            {
+                this.SignupPassword.PasswordChar = '*';
+                isSignupEyeClicked = false;
+
+            }
+        }
+
+        private void LoginShowPasswordBtn_Click(object sender, EventArgs e)
+        {
+            if (!isLoginEyeClicked)
+            {
+                this.LoginPassword.PasswordChar = '\0';
+                isLoginEyeClicked = true;
+            }
+            else
+            {
+                this.LoginPassword.PasswordChar = '*';
+                isLoginEyeClicked = false;
             }
         }
     }
