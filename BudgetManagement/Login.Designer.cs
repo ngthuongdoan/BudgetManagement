@@ -1,6 +1,6 @@
 ﻿namespace BudgetManagement
 {
-    partial class login
+    partial class Login
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(login));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.LoginUsername = new System.Windows.Forms.TextBox();
             this.LoginPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,6 +37,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.SignupFullNameError = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.SignupFullName = new System.Windows.Forms.TextBox();
+            this.SignupShowPasswordBtn = new System.Windows.Forms.PictureBox();
             this.SignupUsernameError = new System.Windows.Forms.Label();
             this.SignupEmailError = new System.Windows.Forms.Label();
             this.SignupPasswordError = new System.Windows.Forms.Label();
@@ -51,12 +55,11 @@
             this.SignupEmail = new System.Windows.Forms.TextBox();
             this.loginBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.SignupShowPasswordBtn = new System.Windows.Forms.PictureBox();
             this.LoginShowPasswordBtn = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SignupShowPasswordBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitBtn)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SignupShowPasswordBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoginShowPasswordBtn)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,7 +117,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(245)))), ((int)(((byte)(236)))));
             this.label4.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(68)))), ((int)(((byte)(89)))));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
             this.label4.Location = new System.Drawing.Point(354, 207);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(39, 40);
@@ -134,7 +137,10 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(68)))), ((int)(((byte)(89)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
+            this.panel1.Controls.Add(this.SignupFullNameError);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.SignupFullName);
             this.panel1.Controls.Add(this.SignupShowPasswordBtn);
             this.panel1.Controls.Add(this.SignupUsernameError);
             this.panel1.Controls.Add(this.SignupEmailError);
@@ -154,12 +160,52 @@
             this.panel1.Size = new System.Drawing.Size(400, 466);
             this.panel1.TabIndex = 5;
             // 
+            // SignupFullNameError
+            // 
+            this.SignupFullNameError.AutoSize = true;
+            this.SignupFullNameError.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SignupFullNameError.ForeColor = System.Drawing.Color.Black;
+            this.SignupFullNameError.Location = new System.Drawing.Point(118, 285);
+            this.SignupFullNameError.Name = "SignupFullNameError";
+            this.SignupFullNameError.Size = new System.Drawing.Size(31, 15);
+            this.SignupFullNameError.TabIndex = 21;
+            this.SignupFullNameError.Text = "error";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(116, 227);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(85, 21);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "Your name";
+            // 
+            // SignupFullName
+            // 
+            this.SignupFullName.Location = new System.Drawing.Point(116, 252);
+            this.SignupFullName.Name = "SignupFullName";
+            this.SignupFullName.Size = new System.Drawing.Size(188, 29);
+            this.SignupFullName.TabIndex = 5;
+            // 
+            // SignupShowPasswordBtn
+            // 
+            this.SignupShowPasswordBtn.BackColor = System.Drawing.Color.White;
+            this.SignupShowPasswordBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SignupShowPasswordBtn.Image = ((System.Drawing.Image)(resources.GetObject("SignupShowPasswordBtn.Image")));
+            this.SignupShowPasswordBtn.Location = new System.Drawing.Point(275, 331);
+            this.SignupShowPasswordBtn.Name = "SignupShowPasswordBtn";
+            this.SignupShowPasswordBtn.Size = new System.Drawing.Size(27, 24);
+            this.SignupShowPasswordBtn.TabIndex = 18;
+            this.SignupShowPasswordBtn.TabStop = false;
+            this.SignupShowPasswordBtn.Click += new System.EventHandler(this.SignupShowPasswordBtn_Click);
+            // 
             // SignupUsernameError
             // 
             this.SignupUsernameError.AutoSize = true;
             this.SignupUsernameError.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SignupUsernameError.ForeColor = System.Drawing.Color.Black;
-            this.SignupUsernameError.Location = new System.Drawing.Point(116, 178);
+            this.SignupUsernameError.Location = new System.Drawing.Point(118, 131);
             this.SignupUsernameError.Name = "SignupUsernameError";
             this.SignupUsernameError.Size = new System.Drawing.Size(31, 15);
             this.SignupUsernameError.TabIndex = 17;
@@ -170,7 +216,7 @@
             this.SignupEmailError.AutoSize = true;
             this.SignupEmailError.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SignupEmailError.ForeColor = System.Drawing.Color.Black;
-            this.SignupEmailError.Location = new System.Drawing.Point(116, 255);
+            this.SignupEmailError.Location = new System.Drawing.Point(118, 208);
             this.SignupEmailError.Name = "SignupEmailError";
             this.SignupEmailError.Size = new System.Drawing.Size(31, 15);
             this.SignupEmailError.TabIndex = 16;
@@ -181,7 +227,7 @@
             this.SignupPasswordError.AutoSize = true;
             this.SignupPasswordError.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SignupPasswordError.ForeColor = System.Drawing.Color.Black;
-            this.SignupPasswordError.Location = new System.Drawing.Point(116, 332);
+            this.SignupPasswordError.Location = new System.Drawing.Point(118, 362);
             this.SignupPasswordError.Name = "SignupPasswordError";
             this.SignupPasswordError.Size = new System.Drawing.Size(31, 15);
             this.SignupPasswordError.TabIndex = 15;
@@ -209,11 +255,11 @@
             this.signupBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.signupBtn.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.signupBtn.ForeColor = System.Drawing.Color.Black;
-            this.signupBtn.Location = new System.Drawing.Point(161, 367);
+            this.signupBtn.Location = new System.Drawing.Point(161, 395);
             this.signupBtn.Name = "signupBtn";
             this.signupBtn.Size = new System.Drawing.Size(100, 50);
-            this.signupBtn.TabIndex = 8;
-            this.signupBtn.Text = "Signup";
+            this.signupBtn.TabIndex = 7;
+            this.signupBtn.Text = "Sign up";
             this.signupBtn.UseVisualStyleBackColor = false;
             this.signupBtn.Click += new System.EventHandler(this.signupBtn_Click);
             // 
@@ -221,7 +267,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(116, 274);
+            this.label9.Location = new System.Drawing.Point(116, 304);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(76, 21);
             this.label9.TabIndex = 13;
@@ -229,18 +275,18 @@
             // 
             // SignupPassword
             // 
-            this.SignupPassword.Location = new System.Drawing.Point(116, 299);
+            this.SignupPassword.Location = new System.Drawing.Point(116, 329);
             this.SignupPassword.Name = "SignupPassword";
             this.SignupPassword.PasswordChar = '*';
             this.SignupPassword.Size = new System.Drawing.Size(188, 29);
-            this.SignupPassword.TabIndex = 12;
+            this.SignupPassword.TabIndex = 6;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(116, 56);
+            this.label6.Location = new System.Drawing.Point(116, 30);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(104, 32);
             this.label6.TabIndex = 11;
@@ -250,7 +296,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(116, 197);
+            this.label7.Location = new System.Drawing.Point(116, 150);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(48, 21);
             this.label7.TabIndex = 10;
@@ -259,9 +305,9 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(68)))), ((int)(((byte)(89)))));
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(116, 120);
+            this.label8.Location = new System.Drawing.Point(116, 73);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(81, 21);
             this.label8.TabIndex = 9;
@@ -269,21 +315,21 @@
             // 
             // SignupUsername
             // 
-            this.SignupUsername.Location = new System.Drawing.Point(116, 145);
+            this.SignupUsername.Location = new System.Drawing.Point(116, 98);
             this.SignupUsername.Name = "SignupUsername";
             this.SignupUsername.Size = new System.Drawing.Size(188, 29);
-            this.SignupUsername.TabIndex = 7;
+            this.SignupUsername.TabIndex = 3;
             // 
             // SignupEmail
             // 
-            this.SignupEmail.Location = new System.Drawing.Point(116, 222);
+            this.SignupEmail.Location = new System.Drawing.Point(116, 175);
             this.SignupEmail.Name = "SignupEmail";
             this.SignupEmail.Size = new System.Drawing.Size(188, 29);
-            this.SignupEmail.TabIndex = 8;
+            this.SignupEmail.TabIndex = 4;
             // 
             // loginBtn
             // 
-            this.loginBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(68)))), ((int)(((byte)(89)))));
+            this.loginBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
             this.loginBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.loginBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.loginBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
@@ -294,7 +340,7 @@
             this.loginBtn.Location = new System.Drawing.Point(135, 303);
             this.loginBtn.Name = "loginBtn";
             this.loginBtn.Size = new System.Drawing.Size(100, 50);
-            this.loginBtn.TabIndex = 7;
+            this.loginBtn.TabIndex = 2;
             this.loginBtn.Text = "Login";
             this.loginBtn.UseVisualStyleBackColor = false;
             this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
@@ -309,31 +355,19 @@
             this.panel2.Size = new System.Drawing.Size(383, 466);
             this.panel2.TabIndex = 14;
             // 
-            // SignupShowPasswordBtn
-            // 
-            this.SignupShowPasswordBtn.BackColor = System.Drawing.Color.White;
-            this.SignupShowPasswordBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SignupShowPasswordBtn.Image = ((System.Drawing.Image)(resources.GetObject("SignupShowPasswordBtn.Image")));
-            this.SignupShowPasswordBtn.Location = new System.Drawing.Point(277, 301);
-            this.SignupShowPasswordBtn.Name = "SignupShowPasswordBtn";
-            this.SignupShowPasswordBtn.Size = new System.Drawing.Size(27, 24);
-            this.SignupShowPasswordBtn.TabIndex = 18;
-            this.SignupShowPasswordBtn.TabStop = false;
-            this.SignupShowPasswordBtn.Click += new System.EventHandler(this.SignupShowPasswordBtn_Click);
-            // 
             // LoginShowPasswordBtn
             // 
             this.LoginShowPasswordBtn.BackColor = System.Drawing.Color.White;
             this.LoginShowPasswordBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LoginShowPasswordBtn.Image = ((System.Drawing.Image)(resources.GetObject("LoginShowPasswordBtn.Image")));
-            this.LoginShowPasswordBtn.Location = new System.Drawing.Point(251, 241);
+            this.LoginShowPasswordBtn.Location = new System.Drawing.Point(249, 241);
             this.LoginShowPasswordBtn.Name = "LoginShowPasswordBtn";
             this.LoginShowPasswordBtn.Size = new System.Drawing.Size(27, 24);
             this.LoginShowPasswordBtn.TabIndex = 19;
             this.LoginShowPasswordBtn.TabStop = false;
             this.LoginShowPasswordBtn.Click += new System.EventHandler(this.LoginShowPasswordBtn_Click);
             // 
-            // login
+            // Login
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
@@ -349,16 +383,16 @@
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
-            this.Name = "login";
-            this.ShowInTaskbar = false;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SignupShowPasswordBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitBtn)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SignupShowPasswordBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoginShowPasswordBtn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -391,5 +425,8 @@
         private System.Windows.Forms.Label SignupEmailError;
         private System.Windows.Forms.PictureBox SignupShowPasswordBtn;
         private System.Windows.Forms.PictureBox LoginShowPasswordBtn;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox SignupFullName;
+        private System.Windows.Forms.Label SignupFullNameError;
     }
 }

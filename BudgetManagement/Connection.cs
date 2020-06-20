@@ -27,6 +27,20 @@ namespace BudgetManagement
 
         }
 
+        public static void Close()
+        {
+            try
+            {
+                conn.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+        }
+
         public static SqlDataReader Select(string selectString)
         {
 
@@ -46,7 +60,7 @@ namespace BudgetManagement
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                throw e;
             }
         }
 
