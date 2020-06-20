@@ -28,7 +28,6 @@ namespace BudgetManagement
             Init();
             AdditionUI();
             Connection.Connect();
-
         }
 
         protected override CreateParams CreateParams
@@ -115,7 +114,7 @@ namespace BudgetManagement
             {
                 //INSERT DATABASE
                 // Hash
-                var hashedPassword = SecurePasswordHasher.Hash("mypassword");
+                var hashedPassword = SecurePasswordHasher.Hash(this.SignupPassword.Text);
                 // Verify
                 //var result = SecurePasswordHasher.Verify("mypassword", hash);
                 string insertString = $"INSERT INTO users VALUES (" +
@@ -158,6 +157,30 @@ namespace BudgetManagement
             {
                 this.LoginPassword.PasswordChar = '*';
                 isLoginEyeClicked = false;
+            }
+        }
+
+        private void loginBtn_Click(object sender, EventArgs e)
+        {
+            string selectString = $"SELECT password FROM users WHERE username = '{this.LoginUsername.Text}'";
+            try
+            {
+                SqlDataReader reader = Connection.Select(selectString);
+                reader.Read();
+                bool isAuthenticated = SecurePasswordHasher.Verify(this.LoginPassword.Text, reader["password"].ToString());
+                if (isAuthenticated)
+                {
+                    MessageBox.Show("Logged in", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show("Incorrect username or password", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

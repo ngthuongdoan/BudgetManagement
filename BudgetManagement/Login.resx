@@ -132,7 +132,7 @@
         LunzNXQc/dlP5j9Cr/cdEidi9HGLSwkAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="LoginShowPasswordBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="SignupShowPasswordBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAABgmlDQ1BJQ0MgcHJvZmlsZQAAKM+VkUso
         RFEcxn+uZxpZmIVkcRfYoIRkqSFSlGZGzWDh3jtmqLnXdO/IxlLZKguPjdfCxpqtha1SyqNkZWlFbKTr
@@ -152,7 +152,7 @@
         GEtQrdqbtdwwBzfMwQ1zcMMc3PDulcJ/y/KsY+9tzuQAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="SignupShowPasswordBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="LoginShowPasswordBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAABgmlDQ1BJQ0MgcHJvZmlsZQAAKM+VkUso
         RFEcxn+uZxpZmIVkcRfYoIRkqSFSlGZGzWDh3jtmqLnXdO/IxlLZKguPjdfCxpqtha1SyqNkZWlFbKTr
