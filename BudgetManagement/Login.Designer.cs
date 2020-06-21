@@ -69,6 +69,7 @@
             this.LoginUsername.Name = "LoginUsername";
             this.LoginUsername.Size = new System.Drawing.Size(188, 29);
             this.LoginUsername.TabIndex = 0;
+            this.LoginUsername.TabStop = false;
             // 
             // LoginPassword
             // 
@@ -77,6 +78,7 @@
             this.LoginPassword.PasswordChar = '*';
             this.LoginPassword.Size = new System.Drawing.Size(188, 29);
             this.LoginPassword.TabIndex = 1;
+            this.LoginPassword.TabStop = false;
             // 
             // label1
             // 
@@ -187,6 +189,7 @@
             this.SignupFullName.Name = "SignupFullName";
             this.SignupFullName.Size = new System.Drawing.Size(188, 29);
             this.SignupFullName.TabIndex = 5;
+            this.SignupFullName.TabStop = false;
             // 
             // SignupShowPasswordBtn
             // 
@@ -280,6 +283,7 @@
             this.SignupPassword.PasswordChar = '*';
             this.SignupPassword.Size = new System.Drawing.Size(188, 29);
             this.SignupPassword.TabIndex = 6;
+            this.SignupPassword.TabStop = false;
             // 
             // label6
             // 
@@ -319,6 +323,7 @@
             this.SignupUsername.Name = "SignupUsername";
             this.SignupUsername.Size = new System.Drawing.Size(188, 29);
             this.SignupUsername.TabIndex = 3;
+            this.SignupUsername.TabStop = false;
             // 
             // SignupEmail
             // 
@@ -326,12 +331,13 @@
             this.SignupEmail.Name = "SignupEmail";
             this.SignupEmail.Size = new System.Drawing.Size(188, 29);
             this.SignupEmail.TabIndex = 4;
+            this.SignupEmail.TabStop = false;
             // 
             // loginBtn
             // 
             this.loginBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
             this.loginBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.loginBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.loginBtn.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.loginBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.loginBtn.FlatAppearance.BorderSize = 0;
             this.loginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -341,8 +347,10 @@
             this.loginBtn.Name = "loginBtn";
             this.loginBtn.Size = new System.Drawing.Size(100, 50);
             this.loginBtn.TabIndex = 2;
+            this.loginBtn.TabStop = false;
             this.loginBtn.Text = "Login";
             this.loginBtn.UseVisualStyleBackColor = false;
+            this.loginBtn.UseWaitCursor = true;
             this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
             // 
             // panel2

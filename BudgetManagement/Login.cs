@@ -75,7 +75,6 @@ namespace BudgetManagement
 
         private bool checkUsername()
         {
-            // trùng username
             if (this.SignupUsername.Text == "") return false;
             string selectString = $"SELECT * FROM users WHERE username = '{this.SignupUsername.Text}'";
             Connection.Connect();
@@ -86,7 +85,6 @@ namespace BudgetManagement
                 string username = reader["username"].ToString();
                 Connection.Close();
                 if (username == this.SignupUsername.Text) return false;
-
             }
             catch
             {
@@ -115,13 +113,6 @@ namespace BudgetManagement
             return true;
         }
 
-        public byte[] OpenImage(string path)
-        {
-            Image img = Image.FromFile(path);
-            MemoryStream tmpStream = new MemoryStream();
-            img.Save(tmpStream, ImageFormat.Png); // change to other format
-            return tmpStream.GetBuffer();
-        }
         private void signupBtn_Click(object sender, EventArgs e)
         {
             ClearError();
@@ -132,29 +123,24 @@ namespace BudgetManagement
             isChecked = checkUsername() && checkEmail() && checkPassword() && checkFullName();
             if (isChecked)
             {
-                // Convert name to UTF-8
-                byte[] bytes = Encoding.UTF8.GetBytes(this.SignupFullName.Text);
-                string fullname = Encoding.GetEncoding(1252).GetString(bytes);
-                //Hash password
-                var hashedPassword = SecurePasswordHasher.Hash(this.SignupPassword.Text);
-                //Read avatar
-                FileInfo finfo = new FileInfo(@"E:\Code\.NET\BudgetManagement\img\avatar-placeholder.png");
-                byte[] btImage = new byte[finfo.Length];
-                FileStream fStream = finfo.OpenRead();
-                fStream.Read(btImage, 0, btImage.Length);
-                fStream.Close();
+                UserModel user = new UserModel();
+                user.Username = this.SignupUsername.Text;
+                user.Email = this.SignupEmail.Text;
+                user.FullName = user.ChangeUTF8(this.SignupFullName.Text);
+                user.Password = user.HashPassword(this.SignupPassword.Text);
+                user.Avatar = user.ChangeAvatar(@"E:\Code\.NET\BudgetManagement\img\avatar-placeholder.png");
                 string insertString = $"INSERT INTO users VALUES (" +
-                    $"'{this.SignupUsername.Text}'," +
-                    $"'{this.SignupEmail.Text}'," +
-                    $"'{fullname}'," +
-                    $"'{hashedPassword}'," +
+                    $"'{user.Username}'," +
+                    $"'{user.Email}'," +
+                    $"'{user.FullName}'," +
+                    $"'{user.Password}'," +
                     $"@AVATAR)";
                 try
                 {
                     Connection.Connect();
                     SqlCommand cmd = new SqlCommand(insertString, Connection.conn);
                     SqlParameter imageParameter = new SqlParameter("@AVATAR", SqlDbType.Image);
-                    imageParameter.Value = btImage;
+                    imageParameter.Value = user.Avatar;
                     cmd.Parameters.Add(imageParameter);
                     cmd.ExecuteNonQuery();
                     Connection.Close();
@@ -211,18 +197,22 @@ namespace BudgetManagement
         private void loginBtn_Click(object sender, EventArgs e)
         {
             string selectString = $"SELECT * FROM users WHERE username = '{this.LoginUsername.Text}'";
+            UserModel user = new UserModel();
             try
             {
                 Connection.Connect();
                 SqlDataReader reader = Connection.Select(selectString);
                 reader.Read();
-                bool isAuthenticated = SecurePasswordHasher.Verify(this.LoginPassword.Text, reader["password"].ToString());
+                user.Username= (string)reader["username"];
+                user.Email= (string)reader["email"];
+                user.FullName= (string)reader["fullname"];
+                user.Password= (string)reader["password"];
+                user.Avatar= (byte[])reader["avatar"];
+                bool isAuthenticated = SecurePasswordHasher.Verify(this.LoginPassword.Text, user.Password);
                 if (isAuthenticated)
                 {
-                    byte[] bytes = Encoding.GetEncoding(1252).GetBytes((string)reader["fullname"]);
-                    string fullname = Encoding.UTF8.GetString(bytes);
                     Connection.Close();
-                    Dashboard dashboard = new Dashboard(this.LoginUsername.Text, fullname);
+                    Dashboard dashboard = new Dashboard(user);
                     dashboard.Show();
                     this.Hide();
                 }

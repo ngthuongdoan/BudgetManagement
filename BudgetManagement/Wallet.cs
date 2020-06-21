@@ -12,21 +12,43 @@ namespace BudgetManagement
 {
     public partial class Wallet : UserControl
     {
-        private static Wallet _instance;
-        public static Wallet Instance
+        private string amount;
+        private string wname;
+        private Image icon;
+
+        public string Amount
         {
-            get
+            get { return this.amount; }
+            set
             {
-                if (_instance == null)
-                {
-                    _instance = new Wallet();   
-                }
-                return _instance;
+                this.amount = value;
+                this.AmountLabel.Text = this.amount;
+            }
+        }
+
+        public string WName
+        {
+            get { return this.wname; }
+            set
+            {
+                this.wname = value;
+                this.WalletName.Text = this.wname;
+            }
+        }
+
+        public Image Icon
+        {
+            get { return this.icon; }
+            set
+            {
+                this.icon = value;
+                this.WalletIcon.Image = this.icon;
             }
         }
         public Wallet()
         {
             InitializeComponent();
+
         }
     }
 }

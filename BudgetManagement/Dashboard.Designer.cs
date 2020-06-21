@@ -30,17 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.MenuPanel = new System.Windows.Forms.Panel();
+            this.DebtMenu = new System.Windows.Forms.Button();
+            this.TransactionMenu = new System.Windows.Forms.Button();
+            this.WalletMenu = new System.Windows.Forms.Button();
             this.LogOutBtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
             this.Username = new System.Windows.Forms.Label();
-            this.WalletMenu = new System.Windows.Forms.Button();
-            this.TransactionMenu = new System.Windows.Forms.Button();
-            this.DebtMenu = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.WalletTab = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.TransactionTab = new System.Windows.Forms.TabPage();
             this.DebtTab = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.WalletContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.Avatar = new BudgetManagement.OvalPictureBox();
             this.MenuPanel.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -60,6 +61,63 @@
             this.MenuPanel.Name = "MenuPanel";
             this.MenuPanel.Size = new System.Drawing.Size(200, 569);
             this.MenuPanel.TabIndex = 0;
+            // 
+            // DebtMenu
+            // 
+            this.DebtMenu.FlatAppearance.BorderSize = 0;
+            this.DebtMenu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(170)))), ((int)(((byte)(59)))));
+            this.DebtMenu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
+            this.DebtMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DebtMenu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DebtMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DebtMenu.Location = new System.Drawing.Point(2, 275);
+            this.DebtMenu.Name = "DebtMenu";
+            this.DebtMenu.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.DebtMenu.Size = new System.Drawing.Size(197, 40);
+            this.DebtMenu.TabIndex = 4;
+            this.DebtMenu.Text = "Debts";
+            this.DebtMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DebtMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.DebtMenu.UseVisualStyleBackColor = true;
+            this.DebtMenu.Click += new System.EventHandler(this.DebtMenu_Click);
+            // 
+            // TransactionMenu
+            // 
+            this.TransactionMenu.FlatAppearance.BorderSize = 0;
+            this.TransactionMenu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(170)))), ((int)(((byte)(59)))));
+            this.TransactionMenu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
+            this.TransactionMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TransactionMenu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TransactionMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TransactionMenu.Location = new System.Drawing.Point(2, 228);
+            this.TransactionMenu.Name = "TransactionMenu";
+            this.TransactionMenu.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.TransactionMenu.Size = new System.Drawing.Size(197, 40);
+            this.TransactionMenu.TabIndex = 3;
+            this.TransactionMenu.Text = "Transactions";
+            this.TransactionMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TransactionMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.TransactionMenu.UseVisualStyleBackColor = true;
+            this.TransactionMenu.Click += new System.EventHandler(this.TransactionMenu_Click);
+            // 
+            // WalletMenu
+            // 
+            this.WalletMenu.FlatAppearance.BorderSize = 0;
+            this.WalletMenu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(170)))), ((int)(((byte)(59)))));
+            this.WalletMenu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
+            this.WalletMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.WalletMenu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WalletMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.WalletMenu.Location = new System.Drawing.Point(2, 181);
+            this.WalletMenu.Name = "WalletMenu";
+            this.WalletMenu.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.WalletMenu.Size = new System.Drawing.Size(197, 40);
+            this.WalletMenu.TabIndex = 2;
+            this.WalletMenu.Text = "Wallets";
+            this.WalletMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.WalletMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.WalletMenu.UseVisualStyleBackColor = true;
+            this.WalletMenu.Click += new System.EventHandler(this.WalletMenu_Click);
             // 
             // LogOutBtn
             // 
@@ -107,63 +165,6 @@
             this.Username.TabIndex = 2;
             this.Username.Text = "username";
             // 
-            // WalletMenu
-            // 
-            this.WalletMenu.FlatAppearance.BorderSize = 0;
-            this.WalletMenu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(170)))), ((int)(((byte)(59)))));
-            this.WalletMenu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
-            this.WalletMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.WalletMenu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WalletMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.WalletMenu.Location = new System.Drawing.Point(2, 181);
-            this.WalletMenu.Name = "WalletMenu";
-            this.WalletMenu.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.WalletMenu.Size = new System.Drawing.Size(197, 40);
-            this.WalletMenu.TabIndex = 2;
-            this.WalletMenu.Text = "Wallets";
-            this.WalletMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.WalletMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.WalletMenu.UseVisualStyleBackColor = true;
-            this.WalletMenu.Click += new System.EventHandler(this.WalletMenu_Click);
-            // 
-            // TransactionMenu
-            // 
-            this.TransactionMenu.FlatAppearance.BorderSize = 0;
-            this.TransactionMenu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(170)))), ((int)(((byte)(59)))));
-            this.TransactionMenu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
-            this.TransactionMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.TransactionMenu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TransactionMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.TransactionMenu.Location = new System.Drawing.Point(2, 228);
-            this.TransactionMenu.Name = "TransactionMenu";
-            this.TransactionMenu.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.TransactionMenu.Size = new System.Drawing.Size(197, 40);
-            this.TransactionMenu.TabIndex = 3;
-            this.TransactionMenu.Text = "Transactions";
-            this.TransactionMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.TransactionMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.TransactionMenu.UseVisualStyleBackColor = true;
-            this.TransactionMenu.Click += new System.EventHandler(this.TransactionMenu_Click);
-            // 
-            // DebtMenu
-            // 
-            this.DebtMenu.FlatAppearance.BorderSize = 0;
-            this.DebtMenu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(170)))), ((int)(((byte)(59)))));
-            this.DebtMenu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
-            this.DebtMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DebtMenu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DebtMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DebtMenu.Location = new System.Drawing.Point(2, 275);
-            this.DebtMenu.Name = "DebtMenu";
-            this.DebtMenu.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.DebtMenu.Size = new System.Drawing.Size(197, 40);
-            this.DebtMenu.TabIndex = 4;
-            this.DebtMenu.Text = "Debts";
-            this.DebtMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DebtMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.DebtMenu.UseVisualStyleBackColor = true;
-            this.DebtMenu.Click += new System.EventHandler(this.DebtMenu_Click);
-            // 
             // tabControl1
             // 
             this.tabControl1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -181,6 +182,7 @@
             // WalletTab
             // 
             this.WalletTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.WalletTab.Controls.Add(this.WalletContainer);
             this.WalletTab.Controls.Add(this.button1);
             this.WalletTab.Location = new System.Drawing.Point(4, 34);
             this.WalletTab.Name = "WalletTab";
@@ -188,6 +190,25 @@
             this.WalletTab.Size = new System.Drawing.Size(785, 637);
             this.WalletTab.TabIndex = 0;
             this.WalletTab.Text = "Wallet";
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(170)))), ((int)(((byte)(59)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(592, 61);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(158, 40);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Add Wallet";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // TransactionTab
             // 
@@ -208,24 +229,12 @@
             this.DebtTab.TabIndex = 2;
             this.DebtTab.Text = "tabPage3";
             // 
-            // button1
+            // WalletContainer
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(170)))), ((int)(((byte)(59)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(614, 29);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(158, 40);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Add Wallet";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
+            this.WalletContainer.Location = new System.Drawing.Point(0, 167);
+            this.WalletContainer.Name = "WalletContainer";
+            this.WalletContainer.Size = new System.Drawing.Size(782, 391);
+            this.WalletContainer.TabIndex = 7;
             // 
             // Avatar
             // 
@@ -255,6 +264,7 @@
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
+            this.Load += new System.EventHandler(this.Dashboard_Load);
             this.MenuPanel.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.WalletTab.ResumeLayout(false);
@@ -279,5 +289,6 @@
         private System.Windows.Forms.TabPage TransactionTab;
         private System.Windows.Forms.TabPage DebtTab;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.FlowLayoutPanel WalletContainer;
     }
 }

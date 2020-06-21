@@ -28,18 +28,64 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.WalletIcon = new System.Windows.Forms.PictureBox();
+            this.WalletName = new System.Windows.Forms.Label();
+            this.AmountLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.WalletIcon)).BeginInit();
             this.SuspendLayout();
+            // 
+            // WalletIcon
+            // 
+            this.WalletIcon.Location = new System.Drawing.Point(35, 0);
+            this.WalletIcon.Margin = new System.Windows.Forms.Padding(6);
+            this.WalletIcon.Name = "WalletIcon";
+            this.WalletIcon.Size = new System.Drawing.Size(64, 59);
+            this.WalletIcon.TabIndex = 0;
+            this.WalletIcon.TabStop = false;
+            // 
+            // WalletName
+            // 
+            this.WalletName.AutoSize = true;
+            this.WalletName.Location = new System.Drawing.Point(159, 17);
+            this.WalletName.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.WalletName.Name = "WalletName";
+            this.WalletName.Size = new System.Drawing.Size(65, 25);
+            this.WalletName.TabIndex = 1;
+            this.WalletName.Text = "Wallet";
+            // 
+            // AmountLabel
+            // 
+            this.AmountLabel.AutoSize = true;
+            this.AmountLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F);
+            this.AmountLabel.Location = new System.Drawing.Point(550, 17);
+            this.AmountLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.AmountLabel.Name = "AmountLabel";
+            this.AmountLabel.Size = new System.Drawing.Size(79, 25);
+            this.AmountLabel.TabIndex = 2;
+            this.AmountLabel.Text = "Amount";
             // 
             // Wallet
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.AmountLabel);
+            this.Controls.Add(this.WalletName);
+            this.Controls.Add(this.WalletIcon);
+            this.Font = new System.Drawing.Font("Segoe UI", 14.25F);
+            this.Margin = new System.Windows.Forms.Padding(20, 6, 6, 15);
             this.Name = "Wallet";
-            this.Size = new System.Drawing.Size(750, 50);
+            this.Size = new System.Drawing.Size(700, 59);
+            ((System.ComponentModel.ISupportInitialize)(this.WalletIcon)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.PictureBox WalletIcon;
+        private System.Windows.Forms.Label WalletName;
+        private System.Windows.Forms.Label AmountLabel;
     }
 }
