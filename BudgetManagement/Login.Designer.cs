@@ -337,7 +337,7 @@
             // 
             this.loginBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
             this.loginBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.loginBtn.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.loginBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.loginBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.loginBtn.FlatAppearance.BorderSize = 0;
             this.loginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -350,7 +350,6 @@
             this.loginBtn.TabStop = false;
             this.loginBtn.Text = "Login";
             this.loginBtn.UseVisualStyleBackColor = false;
-            this.loginBtn.UseWaitCursor = true;
             this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
             // 
             // panel2

@@ -68,10 +68,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(222)))), ((int)(((byte)(150)))));
             this.Controls.Add(this.AmountLabel);
             this.Controls.Add(this.WalletName);
             this.Controls.Add(this.WalletIcon);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Font = new System.Drawing.Font("Segoe UI", 14.25F);
             this.Margin = new System.Windows.Forms.Padding(20, 6, 6, 15);
             this.Name = "Wallet";

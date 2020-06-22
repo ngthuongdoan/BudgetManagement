@@ -66,6 +66,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddWalletForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddWalletForm.Designer.cs">
+      <DependentUpon>AddWalletForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CategogyModel.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="Dashboard.cs">
@@ -97,7 +103,11 @@
     <Compile Include="Wallet.Designer.cs">
       <DependentUpon>Wallet.cs</DependentUpon>
     </Compile>
+    <Compile Include="WalletImage.cs" />
     <Compile Include="WalletModel.cs" />
+    <EmbeddedResource Include="AddWalletForm.resx">
+      <DependentUpon>AddWalletForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>

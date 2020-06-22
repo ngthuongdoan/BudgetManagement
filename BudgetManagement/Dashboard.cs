@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Buffers.Text;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -19,13 +21,17 @@ namespace BudgetManagement
         private UserModel user;
         private const int CS_DROPSHADOW = 0x00020000;
 
+        public Dashboard()
+        {
+            InitializeComponent();
+            AdditionUI();
+        }
         public Dashboard(UserModel user)
         {
             this.user = new UserModel(user);
             InitializeComponent();
             AdditionUI();
         }
-
 
         protected override CreateParams CreateParams
         {
@@ -46,7 +52,6 @@ namespace BudgetManagement
 
         private void UpdateAvatar()
         {
-
             MemoryStream ms = new MemoryStream(this.user.Avatar);
             this.Avatar.Image = Image.FromStream(ms);
             this.Avatar.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -80,17 +85,6 @@ namespace BudgetManagement
                 }
             }
         }
-        private void LogoutBtn_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void LogOutBtn_Click_1(object sender, EventArgs e)
-        {
-            Login login = new Login();
-            login.Show();
-            this.Hide();
-        }
 
         private void Avatar_Click(object sender, EventArgs e)
         {
@@ -106,8 +100,27 @@ namespace BudgetManagement
             WalletContainer.HorizontalScroll.Maximum = 0;
             WalletContainer.AutoScroll = true;
             Connection.Connect();
-            SqlDataReader reader = Connection.Select($"SELECT * FROM wallets WHERE username = '{this.user}'");
+            SqlDataReader reader = Connection.Select($"SELECT * FROM wallets WHERE username = '{this.user.Username}'");
             //select wallet and show
+            ArrayList wList = new ArrayList();
+            try
+            {
+                while (reader.Read())
+                {
+                    WalletModel wallet = new WalletModel((string)reader["walletName"],
+                                                         (double)reader["amount"],
+                                                         (byte[])reader["icon"]);
+                    Wallet w = new Wallet();
+                    w.WName = wallet.WalletName;
+                    w.Amount = wallet.Amount;
+                    w.Icon = wallet.Icon;
+                    this.WalletContainer.Controls.Add(w);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             Connection.Close();
         }
         private void WalletMenu_Click(object sender, EventArgs e)
@@ -129,6 +142,48 @@ namespace BudgetManagement
         private void Dashboard_Load(object sender, EventArgs e)
         {
             ShowContent();
+        }
+
+        private void LogOutBtn_Click_1(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+        }
+        private void ExitBtn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void AddWalletBtn_Click(object sender, EventArgs e)
+        {
+            AddWalletForm frm = new AddWalletForm();
+            frm.ShowDialog(this);
+            if(frm.ShowDialog(this) == DialogResult.OK)
+            {
+                WalletModel wallet = new WalletModel(frm.wallet);
+
+                string insertString = $"INSERT INTO wallets VALUES (" +
+                    $"'{this.user.Username}'," +
+                    $"'{wallet.WalletName}'," +
+                    $"{wallet.Amount}," +
+                    $"@ICON)";
+                try
+                {
+                    Connection.Connect();
+                    SqlCommand cmd = new SqlCommand(insertString, Connection.conn);
+                    SqlParameter imageParameter = new SqlParameter("@ICON", SqlDbType.Image);
+                    imageParameter.Value = wallet.Icon;
+                    cmd.Parameters.Add(imageParameter);
+                    cmd.ExecuteNonQuery();
+                    Connection.Close();
+                    ShowContent();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
         }
     }
 }

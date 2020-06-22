@@ -38,10 +38,10 @@
             this.Username = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.WalletTab = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.WalletContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.AddWalletBtn = new System.Windows.Forms.Button();
             this.TransactionTab = new System.Windows.Forms.TabPage();
             this.DebtTab = new System.Windows.Forms.TabPage();
-            this.WalletContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.Avatar = new BudgetManagement.OvalPictureBox();
             this.MenuPanel.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -153,7 +153,7 @@
             this.ExitBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ExitBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ExitBtn.UseVisualStyleBackColor = true;
-            this.ExitBtn.Click += new System.EventHandler(this.LogoutBtn_Click);
+            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
             // Username
             // 
@@ -183,7 +183,7 @@
             // 
             this.WalletTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.WalletTab.Controls.Add(this.WalletContainer);
-            this.WalletTab.Controls.Add(this.button1);
+            this.WalletTab.Controls.Add(this.AddWalletBtn);
             this.WalletTab.Location = new System.Drawing.Point(4, 34);
             this.WalletTab.Name = "WalletTab";
             this.WalletTab.Padding = new System.Windows.Forms.Padding(3);
@@ -191,24 +191,32 @@
             this.WalletTab.TabIndex = 0;
             this.WalletTab.Text = "Wallet";
             // 
-            // button1
+            // WalletContainer
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(170)))), ((int)(((byte)(59)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(592, 61);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(158, 40);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Add Wallet";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
+            this.WalletContainer.Location = new System.Drawing.Point(0, 167);
+            this.WalletContainer.Name = "WalletContainer";
+            this.WalletContainer.Size = new System.Drawing.Size(782, 391);
+            this.WalletContainer.TabIndex = 7;
+            // 
+            // AddWalletBtn
+            // 
+            this.AddWalletBtn.FlatAppearance.BorderSize = 0;
+            this.AddWalletBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(170)))), ((int)(((byte)(59)))));
+            this.AddWalletBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
+            this.AddWalletBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddWalletBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddWalletBtn.Image = ((System.Drawing.Image)(resources.GetObject("AddWalletBtn.Image")));
+            this.AddWalletBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AddWalletBtn.Location = new System.Drawing.Point(592, 61);
+            this.AddWalletBtn.Name = "AddWalletBtn";
+            this.AddWalletBtn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.AddWalletBtn.Size = new System.Drawing.Size(158, 40);
+            this.AddWalletBtn.TabIndex = 5;
+            this.AddWalletBtn.Text = "Add Wallet";
+            this.AddWalletBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AddWalletBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.AddWalletBtn.UseVisualStyleBackColor = true;
+            this.AddWalletBtn.Click += new System.EventHandler(this.AddWalletBtn_Click);
             // 
             // TransactionTab
             // 
@@ -228,13 +236,6 @@
             this.DebtTab.Size = new System.Drawing.Size(785, 649);
             this.DebtTab.TabIndex = 2;
             this.DebtTab.Text = "tabPage3";
-            // 
-            // WalletContainer
-            // 
-            this.WalletContainer.Location = new System.Drawing.Point(0, 167);
-            this.WalletContainer.Name = "WalletContainer";
-            this.WalletContainer.Size = new System.Drawing.Size(782, 391);
-            this.WalletContainer.TabIndex = 7;
             // 
             // Avatar
             // 
@@ -288,7 +289,7 @@
         private System.Windows.Forms.TabPage WalletTab;
         private System.Windows.Forms.TabPage TransactionTab;
         private System.Windows.Forms.TabPage DebtTab;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button AddWalletBtn;
         private System.Windows.Forms.FlowLayoutPanel WalletContainer;
     }
 }
