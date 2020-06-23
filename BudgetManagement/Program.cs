@@ -14,6 +14,7 @@ namespace BudgetManagement
         [STAThread]
         static void Main()
         {
+            //CategogyModel.InsertCategogy();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());

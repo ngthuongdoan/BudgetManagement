@@ -13,6 +13,7 @@ namespace BudgetManagement
 {
     public partial class Wallet : UserControl
     {
+        private UserModel user;
         private double amount;
         private string wname;
         private byte[] icon;
@@ -37,26 +38,48 @@ namespace BudgetManagement
             }
         }
 
+        public UserModel User
+        {
+            get { return this.user; }
+            set
+            {
+                this.user = value;
+            }
+        }
+
         public byte[] Icon
         {
             get { return this.icon; }
             set
             {
                 this.icon = value;
-                this.WalletIcon.Image = ByteToImage(this.icon);
+                this.WalletIcon.Image = ImageProccess.ByteToImage(this.icon);
             }
         }
-        public Image ByteToImage(byte[] image)
-        {
-            using (var ms = new MemoryStream(image))
-            {
-                return Image.FromStream(ms);
-            }
-        }
+
         public Wallet()
         {
             InitializeComponent();
+        }
 
+        private void DeleteWallet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                DialogResult result = MessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if(result == DialogResult.Yes)
+                {
+                    Connection.Connect();
+                    Connection.Delete($"DELETE FROM wallets WHERE username = '{this.user.Username}' AND walletName = '{this.WalletName.Text}'");
+                    Connection.Close();
+                    this.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

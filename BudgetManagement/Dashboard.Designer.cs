@@ -41,11 +41,14 @@
             this.WalletContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.AddWalletBtn = new System.Windows.Forms.Button();
             this.TransactionTab = new System.Windows.Forms.TabPage();
+            this.AddTransactionBtn = new System.Windows.Forms.Button();
+            this.TransactionContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.DebtTab = new System.Windows.Forms.TabPage();
             this.Avatar = new BudgetManagement.OvalPictureBox();
             this.MenuPanel.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.WalletTab.SuspendLayout();
+            this.TransactionTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Avatar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -221,12 +224,41 @@
             // TransactionTab
             // 
             this.TransactionTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.TransactionTab.Location = new System.Drawing.Point(4, 22);
+            this.TransactionTab.Controls.Add(this.AddTransactionBtn);
+            this.TransactionTab.Controls.Add(this.TransactionContainer);
+            this.TransactionTab.Location = new System.Drawing.Point(4, 34);
             this.TransactionTab.Name = "TransactionTab";
             this.TransactionTab.Padding = new System.Windows.Forms.Padding(3);
-            this.TransactionTab.Size = new System.Drawing.Size(785, 649);
+            this.TransactionTab.Size = new System.Drawing.Size(785, 637);
             this.TransactionTab.TabIndex = 1;
             this.TransactionTab.Text = "tabPage2";
+            // 
+            // AddTransactionBtn
+            // 
+            this.AddTransactionBtn.FlatAppearance.BorderSize = 0;
+            this.AddTransactionBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(170)))), ((int)(((byte)(59)))));
+            this.AddTransactionBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
+            this.AddTransactionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddTransactionBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddTransactionBtn.Image = ((System.Drawing.Image)(resources.GetObject("AddTransactionBtn.Image")));
+            this.AddTransactionBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AddTransactionBtn.Location = new System.Drawing.Point(549, 61);
+            this.AddTransactionBtn.Name = "AddTransactionBtn";
+            this.AddTransactionBtn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.AddTransactionBtn.Size = new System.Drawing.Size(201, 40);
+            this.AddTransactionBtn.TabIndex = 10;
+            this.AddTransactionBtn.Text = "Add Transaction";
+            this.AddTransactionBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AddTransactionBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.AddTransactionBtn.UseVisualStyleBackColor = true;
+            this.AddTransactionBtn.Click += new System.EventHandler(this.AddTransactionBtn_Click);
+            // 
+            // TransactionContainer
+            // 
+            this.TransactionContainer.Location = new System.Drawing.Point(0, 169);
+            this.TransactionContainer.Name = "TransactionContainer";
+            this.TransactionContainer.Size = new System.Drawing.Size(782, 391);
+            this.TransactionContainer.TabIndex = 8;
             // 
             // DebtTab
             // 
@@ -269,6 +301,7 @@
             this.MenuPanel.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.WalletTab.ResumeLayout(false);
+            this.TransactionTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Avatar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -291,5 +324,7 @@
         private System.Windows.Forms.TabPage DebtTab;
         private System.Windows.Forms.Button AddWalletBtn;
         private System.Windows.Forms.FlowLayoutPanel WalletContainer;
+        private System.Windows.Forms.Button AddTransactionBtn;
+        private System.Windows.Forms.FlowLayoutPanel TransactionContainer;
     }
 }

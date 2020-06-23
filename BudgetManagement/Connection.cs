@@ -18,13 +18,11 @@ namespace BudgetManagement
                 string ConnectionString = "Server=localhost;Database=BudgetManagement;Trusted_Connection=True;MultipleActiveResultSets=true;";
                 conn = new SqlConnection(ConnectionString);
                 conn.Open();
-
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
-
         }
 
         public static void Close()
@@ -32,13 +30,11 @@ namespace BudgetManagement
             try
             {
                 conn.Close();
-
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
-
         }
 
         public static SqlDataReader Select(string selectString)

@@ -23,15 +23,6 @@ namespace BudgetManagement
             Amount.Maximum = Decimal.MaxValue;
         }
 
-        public byte[] ImageToByteArray(System.Drawing.Image imageIn)
-        {
-            using (var ms = new MemoryStream())
-            {
-                imageIn.Save(ms, imageIn.RawFormat);
-                return ms.ToArray();
-            }
-        }
-
 
         private bool valid()
         {
@@ -43,7 +34,7 @@ namespace BudgetManagement
         {
             if (valid())
             {
-                this.wallet = new WalletModel(this.WalletName.Text, (double)this.Amount.Value, ImageToByteArray(icon));
+                this.wallet = new WalletModel(this.WalletName.Text, (double)this.Amount.Value, ImageProccess.ImageToByte(icon));
                 this.DialogResult = DialogResult.OK;
             }
             else

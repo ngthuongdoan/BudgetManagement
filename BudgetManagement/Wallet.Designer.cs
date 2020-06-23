@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Wallet));
             this.WalletIcon = new System.Windows.Forms.PictureBox();
             this.WalletName = new System.Windows.Forms.Label();
             this.AmountLabel = new System.Windows.Forms.Label();
+            this.DeleteWallet = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.WalletIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeleteWallet)).BeginInit();
             this.SuspendLayout();
             // 
             // WalletIcon
@@ -64,11 +67,23 @@
             this.AmountLabel.TabIndex = 2;
             this.AmountLabel.Text = "Amount";
             // 
+            // DeleteWallet
+            // 
+            this.DeleteWallet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DeleteWallet.Image = ((System.Drawing.Image)(resources.GetObject("DeleteWallet.Image")));
+            this.DeleteWallet.Location = new System.Drawing.Point(650, 13);
+            this.DeleteWallet.Name = "DeleteWallet";
+            this.DeleteWallet.Size = new System.Drawing.Size(35, 33);
+            this.DeleteWallet.TabIndex = 3;
+            this.DeleteWallet.TabStop = false;
+            this.DeleteWallet.Click += new System.EventHandler(this.DeleteWallet_Click);
+            // 
             // Wallet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(222)))), ((int)(((byte)(150)))));
+            this.Controls.Add(this.DeleteWallet);
             this.Controls.Add(this.AmountLabel);
             this.Controls.Add(this.WalletName);
             this.Controls.Add(this.WalletIcon);
@@ -78,6 +93,7 @@
             this.Name = "Wallet";
             this.Size = new System.Drawing.Size(700, 59);
             ((System.ComponentModel.ISupportInitialize)(this.WalletIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeleteWallet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -88,5 +104,6 @@
         private System.Windows.Forms.PictureBox WalletIcon;
         private System.Windows.Forms.Label WalletName;
         private System.Windows.Forms.Label AmountLabel;
+        private System.Windows.Forms.PictureBox DeleteWallet;
     }
 }

@@ -91,7 +91,7 @@ namespace BudgetManagement
             ChangeAvatar();
         }
 
-        private void ShowContent()
+        private void WalletShowContent()
         {
             this.WalletContainer.Controls.Clear();
             WalletContainer.AutoScroll = false;
@@ -102,7 +102,6 @@ namespace BudgetManagement
             Connection.Connect();
             SqlDataReader reader = Connection.Select($"SELECT * FROM wallets WHERE username = '{this.user.Username}'");
             //select wallet and show
-            ArrayList wList = new ArrayList();
             try
             {
                 while (reader.Read())
@@ -114,6 +113,7 @@ namespace BudgetManagement
                     w.WName = wallet.WalletName;
                     w.Amount = wallet.Amount;
                     w.Icon = wallet.Icon;
+                    w.User = this.user;
                     this.WalletContainer.Controls.Add(w);
                 }
             }
@@ -126,12 +126,51 @@ namespace BudgetManagement
         private void WalletMenu_Click(object sender, EventArgs e)
         {
             this.tabControl1.SelectedTab = this.WalletTab;
-            ShowContent();
+            WalletShowContent();
         }
 
+        private void TransactionShowContent()
+        {
+            this.TransactionContainer.Controls.Clear();
+
+            TransactionContainer.AutoScroll = false;
+            TransactionContainer.HorizontalScroll.Enabled = false;
+            TransactionContainer.HorizontalScroll.Visible = false;
+            TransactionContainer.HorizontalScroll.Maximum = 0;
+            TransactionContainer.AutoScroll = true;
+            Connection.Connect();
+            SqlDataReader reader = Connection.Select($"SELECT * FROM transactions JOIN categogies ON transactions.categogyName = categogies.categogyName WHERE username = '{this.user.Username}'");
+            try
+            {
+                while (reader.Read())
+                {
+                    TransactionModel transactionModel = new TransactionModel();
+                    transactionModel.Username = (string)reader["username"];
+                    transactionModel.WalletName = (string)reader["walletName"];
+                    transactionModel.Type = (string)reader["transactionType"];
+                    transactionModel.Value = (double)reader["transactionValue"];
+                    transactionModel.Note = (string)reader["transactionNote"];
+                    string date1 = reader.GetDateTime(7).ToString("yyyy-MM-dd");
+                    transactionModel.Time = DateTime.Parse(date1);
+                    Transaction transaction = new Transaction(transactionModel.Type);
+                    transaction.Value.Text = transactionModel.Value.ToString();
+                    transaction.Wallet.Text = transactionModel.WalletName;
+
+                    transaction.Time.Text = transactionModel.Time.ToString("dd-MM-yyyy");
+                    transaction.Categogy.Image = ImageProccess.ByteToImage((byte[])reader["categogyImage"]);
+                    this.TransactionContainer.Controls.Add(transaction);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Connection.Close();
+        }
         private void TransactionMenu_Click(object sender, EventArgs e)
         {
             this.tabControl1.SelectedTab = this.TransactionTab;
+            TransactionShowContent();
         }
 
         private void DebtMenu_Click(object sender, EventArgs e)
@@ -141,7 +180,7 @@ namespace BudgetManagement
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            ShowContent();
+            WalletShowContent();
         }
 
         private void LogOutBtn_Click_1(object sender, EventArgs e)
@@ -158,7 +197,6 @@ namespace BudgetManagement
         private void AddWalletBtn_Click(object sender, EventArgs e)
         {
             AddWalletForm frm = new AddWalletForm();
-            frm.ShowDialog(this);
             if(frm.ShowDialog(this) == DialogResult.OK)
             {
                 WalletModel wallet = new WalletModel(frm.wallet);
@@ -177,7 +215,36 @@ namespace BudgetManagement
                     cmd.Parameters.Add(imageParameter);
                     cmd.ExecuteNonQuery();
                     Connection.Close();
-                    ShowContent();
+                    WalletShowContent();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+
+        private void AddTransactionBtn_Click(object sender, EventArgs e)
+        {
+            AddTransactionForm frm = new AddTransactionForm(user);
+            if (frm.ShowDialog(this) == DialogResult.OK)
+            {
+                TransactionModel transactionModel = new TransactionModel(frm.transaction);
+                
+                string insertString = $"INSERT INTO transactions VALUES (" +
+                    $"'{transactionModel.Username}'," +
+                    $"'{transactionModel.WalletName}'," +
+                    $"'{transactionModel.CategogyName}'," +
+                    $"'{transactionModel.Type}'," +
+                    $"{transactionModel.Value}," +
+                    $"'{transactionModel.Note}'," +
+                    $"'{transactionModel.Time.ToString("yyyy-MM-dd")}')";
+                try
+                {
+                    Connection.Connect();
+                    Connection.Insert(insertString);
+                    Connection.Close();
+                    TransactionShowContent();
                 }
                 catch (Exception ex)
                 {
