@@ -42,11 +42,15 @@ namespace BudgetManagement
 
             SqlCommand cmd = new SqlCommand(selectString, conn);
             SqlDataReader reader = cmd.ExecuteReader();
-
             return reader;
         }
 
+        public static object SelectScalar(string selectString)
+        {
 
+            SqlCommand cmd = new SqlCommand(selectString, conn);
+            return cmd.ExecuteScalar();
+        }
         public static void Insert(string insertString)
         {
             try

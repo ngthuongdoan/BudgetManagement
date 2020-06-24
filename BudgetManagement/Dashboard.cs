@@ -155,10 +155,10 @@ namespace BudgetManagement
                     Transaction transaction = new Transaction(transactionModel.Type);
                     transaction.Value.Text = transactionModel.Value.ToString();
                     transaction.Wallet.Text = transactionModel.WalletName;
-
                     transaction.Time.Text = transactionModel.Time.ToString("dd-MM-yyyy");
                     transaction.Categogy.Image = ImageProccess.ByteToImage((byte[])reader["categogyImage"]);
                     this.TransactionContainer.Controls.Add(transaction);
+
                 }
             }
             catch (Exception ex)
@@ -197,7 +197,7 @@ namespace BudgetManagement
         private void AddWalletBtn_Click(object sender, EventArgs e)
         {
             AddWalletForm frm = new AddWalletForm();
-            if(frm.ShowDialog(this) == DialogResult.OK)
+            if (frm.ShowDialog(this) == DialogResult.OK)
             {
                 WalletModel wallet = new WalletModel(frm.wallet);
 
@@ -230,7 +230,7 @@ namespace BudgetManagement
             if (frm.ShowDialog(this) == DialogResult.OK)
             {
                 TransactionModel transactionModel = new TransactionModel(frm.transaction);
-                
+
                 string insertString = $"INSERT INTO transactions VALUES (" +
                     $"'{transactionModel.Username}'," +
                     $"'{transactionModel.WalletName}'," +
@@ -243,8 +243,14 @@ namespace BudgetManagement
                 {
                     Connection.Connect();
                     Connection.Insert(insertString);
+                    double amount = (double)Connection.SelectScalar($"SELECT amount FROM wallets WHERE username='{this.user.Username}' AND walletName='{transactionModel.WalletName}'");
+                    double finalAmount = (transactionModel.Type == "Income") ? (amount + transactionModel.Value) : (amount - transactionModel.Value);
+
+                    Connection.Update($"UPDATE wallets SET amount={finalAmount} WHERE username='{this.user.Username}' AND walletName='{transactionModel.WalletName}'");
                     Connection.Close();
+
                     TransactionShowContent();
+
                 }
                 catch (Exception ex)
                 {
