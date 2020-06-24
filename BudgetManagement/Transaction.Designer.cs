@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Transaction));
             this.Categogy = new System.Windows.Forms.PictureBox();
             this.Value = new System.Windows.Forms.Label();
             this.Wallet = new System.Windows.Forms.Label();
             this.Time = new System.Windows.Forms.Label();
             this.Type = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Categogy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Type)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Categogy
@@ -48,9 +51,10 @@
             // Value
             // 
             this.Value.AutoSize = true;
+            this.Value.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Value.Location = new System.Drawing.Point(93, 8);
             this.Value.Name = "Value";
-            this.Value.Size = new System.Drawing.Size(63, 25);
+            this.Value.Size = new System.Drawing.Size(65, 25);
             this.Value.TabIndex = 1;
             this.Value.Text = "label1";
             // 
@@ -75,16 +79,27 @@
             // 
             // Type
             // 
-            this.Type.Location = new System.Drawing.Point(628, 3);
+            this.Type.Location = new System.Drawing.Point(590, 3);
             this.Type.Name = "Type";
             this.Type.Size = new System.Drawing.Size(55, 55);
             this.Type.TabIndex = 4;
             this.Type.TabStop = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(662, 13);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 34);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // Transaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Type);
             this.Controls.Add(this.Time);
             this.Controls.Add(this.Wallet);
@@ -97,6 +112,7 @@
             this.Load += new System.EventHandler(this.Transaction_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Categogy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Type)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -108,5 +124,6 @@
         public System.Windows.Forms.Label Value;
         public System.Windows.Forms.Label Wallet;
         public System.Windows.Forms.Label Time;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

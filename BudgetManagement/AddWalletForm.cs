@@ -18,9 +18,10 @@ namespace BudgetManagement
         private Image icon = null;
         public AddWalletForm()
         {
-
             InitializeComponent();
             Amount.Maximum = Decimal.MaxValue;
+            Amount.Minimum = Decimal.MinValue;
+
         }
 
 

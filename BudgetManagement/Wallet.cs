@@ -24,7 +24,7 @@ namespace BudgetManagement
             set
             {
                 this.amount = value;
-                this.AmountLabel.Text = this.amount.ToString();
+                this.AmountLabel.Text = String.Format("{0:n0}", this.amount);
             }
         }
 
@@ -71,6 +71,7 @@ namespace BudgetManagement
                 if(result == DialogResult.Yes)
                 {
                     Connection.Connect();
+                    Connection.Delete($"DELETE FROM transactions WHERE username = '{this.user.Username}' AND walletName = '{this.WalletName.Text}'");
                     Connection.Delete($"DELETE FROM wallets WHERE username = '{this.user.Username}' AND walletName = '{this.WalletName.Text}'");
                     Connection.Close();
                     this.Dispose();

@@ -23,9 +23,11 @@ namespace BudgetManagement
             InitializeComponent();
             this.user = new UserModel();
             time.Format = DateTimePickerFormat.Custom;
-            time.CustomFormat = "yyyy--MM-dd";
+            time.Value = DateTime.Now;
+            time.CustomFormat = "yyyy-MM-dd";
             value.Maximum = Decimal.MaxValue;
             this.categogyName.Text = "";
+
         }
 
         public AddTransactionForm(UserModel user)
@@ -33,6 +35,7 @@ namespace BudgetManagement
             InitializeComponent();
             this.user = new UserModel(user);
             time.Format = DateTimePickerFormat.Custom;
+            time.Value = DateTime.Now;
             time.CustomFormat = "yyyy-MM-dd";
             value.Maximum = Decimal.MaxValue;
             this.categogyName.Text = "";
@@ -69,8 +72,7 @@ namespace BudgetManagement
         private bool valid()
         {
             bool walletCheck = this.wallet.Text != "";
-            bool iconCheck = this.categogyName.Text != "";
-            return walletCheck && iconCheck;
+            return walletCheck;
         }
         private void SubmitBtn_Click(object sender, EventArgs e)
         {

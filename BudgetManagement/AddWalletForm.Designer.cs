@@ -93,6 +93,11 @@
             // Amount
             // 
             this.Amount.Location = new System.Drawing.Point(53, 215);
+            this.Amount.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
             this.Amount.Name = "Amount";
             this.Amount.Size = new System.Drawing.Size(189, 31);
             this.Amount.TabIndex = 6;
@@ -201,8 +206,8 @@
         private System.Windows.Forms.Button CancelBtn;
         public System.Windows.Forms.TextBox WalletName;
         public System.Windows.Forms.NumericUpDown Amount;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        public System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.PictureBox pictureBox2;
+        public System.Windows.Forms.PictureBox pictureBox3;
     }
 }

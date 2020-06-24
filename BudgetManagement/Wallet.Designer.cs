@@ -59,11 +59,11 @@
             // AmountLabel
             // 
             this.AmountLabel.AutoSize = true;
-            this.AmountLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F);
+            this.AmountLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AmountLabel.Location = new System.Drawing.Point(550, 17);
             this.AmountLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.AmountLabel.Name = "AmountLabel";
-            this.AmountLabel.Size = new System.Drawing.Size(79, 25);
+            this.AmountLabel.Size = new System.Drawing.Size(85, 25);
             this.AmountLabel.TabIndex = 2;
             this.AmountLabel.Text = "Amount";
             // 

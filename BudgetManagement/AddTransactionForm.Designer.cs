@@ -157,7 +157,7 @@
             this.time.Name = "time";
             this.time.Size = new System.Drawing.Size(185, 31);
             this.time.TabIndex = 26;
-            this.time.Value = new System.DateTime(2020, 6, 23, 19, 13, 29, 0);
+            this.time.Value = new System.DateTime(2020, 6, 24, 0, 0, 0, 0);
             // 
             // label4
             // 
@@ -264,19 +264,19 @@
         #endregion
         private System.Windows.Forms.Button CancelBtn;
         private System.Windows.Forms.Button SubmitBtn;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton income;
-        private System.Windows.Forms.RadioButton expense;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown value;
-        private System.Windows.Forms.DateTimePicker time;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.RichTextBox note;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox wallet;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label categogyName;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.RadioButton income;
+        public System.Windows.Forms.RadioButton expense;
+        public System.Windows.Forms.DateTimePicker time;
+        public System.Windows.Forms.RichTextBox note;
+        public System.Windows.Forms.ComboBox wallet;
+        public System.Windows.Forms.Label categogyName;
+        public System.Windows.Forms.NumericUpDown value;
+        public System.Windows.Forms.Button button1;
     }
 }

@@ -44,8 +44,6 @@ namespace BudgetManagement
                 cmd.Parameters.Add(imageParameter);
                 cmd.ExecuteNonQuery();
                 Connection.Close();
-                Connection.Connect();
-                Connection.Close();
             }
         }
     }

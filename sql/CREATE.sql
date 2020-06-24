@@ -29,7 +29,7 @@ CREATE TABLE transactions (
 	FOREIGN KEY (username,walletName) REFERENCES wallets (username,walletName),
 	--FOREIGN KEY categogyName) REFERENCES categogies(categogyName),
 );
-
+alter table transactions nocheck constraint FK__transacti__categ__60A75C0F
 CREATE TABLE categogies (
 	categogyName VARCHAR(50) PRIMARY KEY,
 	categogyImage IMAGE NOT NULL,
