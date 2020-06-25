@@ -43,7 +43,6 @@ namespace BudgetManagement
         }
         private void AdditionUI()
         {
-
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Username.Text = this.user.ChangeToNormal(this.user.FullName);
             UpdateAvatar();
@@ -87,7 +86,6 @@ namespace BudgetManagement
         {
             ChangeAvatar();
         }
-
         private void ModifyWallet(object sender, MouseEventArgs e)
         {
             string result = Interaction.InputBox("Change initial value:", "Update Wallet", (sender as Wallet).Amount.ToString());
@@ -103,12 +101,11 @@ namespace BudgetManagement
                 Console.WriteLine(ex.Message);
             }
         }
-
         private void ModifyTransaction(object sender, MouseEventArgs e)
         {
             AddTransactionForm frm = new AddTransactionForm(user);
             frm.label1.Text = "UPDATE TRANSACTION";
-            frm.button1.Visible=false;
+            frm.button1.Visible = false;
             string type = (sender as Transaction).Value.Text;
             double finalAmount = Convert.ToDouble(type);
             if (Convert.ToDecimal(type) > 0)
@@ -127,12 +124,12 @@ namespace BudgetManagement
             frm.expense.Enabled = false;
             frm.wallet.Text = (sender as Transaction).Wallet.Text;
             frm.wallet.Enabled = false;
+            frm.note.Text = (sender as Transaction).note;
             frm.time.Value = DateTime.ParseExact((sender as Transaction).Time.Text, "dd-MM-yyyy", null);
-            
+
             if (frm.ShowDialog(this) == DialogResult.OK)
             {
                 TransactionModel transactionModel = new TransactionModel(frm.transaction);
-
                 double value = (transactionModel.Type == "Income") ? transactionModel.Value : -transactionModel.Value;
                 string updateString = $"UPDATE transactions SET " +
                     $"transactionValue={value}," +
@@ -146,7 +143,7 @@ namespace BudgetManagement
                     if (finalAmount != transactionModel.Value)
                     {
                         double amount = (double)Connection.SelectScalar($"SELECT amount FROM wallets WHERE username='{this.user.Username}' AND walletName='{transactionModel.WalletName}'");
-                        double a = amount-finalAmount + value;
+                        double a = amount - finalAmount + value;
 
                         Connection.Update($"UPDATE wallets SET amount={a} WHERE username='{this.user.Username}' AND walletName='{transactionModel.WalletName}'");
                         Connection.Close();
@@ -159,8 +156,85 @@ namespace BudgetManagement
                 }
             }
         }
+        private void OverviewShowContent()
+        {
+            this.tabControl1.SelectedTab = this.OverviewTab;
+            //INCOME_EXPENSE
+            this.IncomeExpenseChart.Series.Clear();
+            this.IncomeExpenseChart.Series.Add("MySeries");
+            this.IncomeExpenseChart.Series["MySeries"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            Connection.Connect();
+            double income=0, expense = 0;
+            try
+            {
+                income = (double)Connection.SelectScalar($"SELECT SUM(transactionValue) FROM transactions WHERE username = '{this.user.Username}' AND transactionType='Income'");
+                expense = -(double)Connection.SelectScalar($"SELECT SUM(transactionValue) FROM transactions WHERE username = '{this.user.Username}' AND transactionType='Expense'"); ;
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
+            Connection.Close();
+            this.IncomeExpenseChart.Series["MySeries"].Points.AddXY("Income", income);
+            this.IncomeExpenseChart.Series["MySeries"].Points.AddXY("Expense", expense);
+            //CATEGOGY
+            this.CategogyChart.Series.Clear();
+            this.CategogyChart.Series.Add("MySeries");
+            this.CategogyChart.Series["MySeries"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            ArrayList AllCategory = new ArrayList();
+            Connection.Connect();
+            try
+            {
+                SqlDataReader reader = Connection.Select($"SELECT categogyName FROM transactions WHERE username = '{this.user.Username}' AND transactionType='Expense'");
+                while (reader.Read())
+                {
+                    AllCategory.Add((string)reader["categogyName"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            foreach (string categogy in AllCategory)
+            {
+                double val = (double)Connection.SelectScalar($"SELECT SUM(transactionValue) FROM transactions WHERE username = '{this.user.Username}' AND categogyName='{categogy}'");
+                this.CategogyChart.Series["MySeries"].Points.AddXY(categogy, val);
+            }
+            Connection.Close();
+            //TODAY TRANSACTION
+            Connection.Connect();
+            try
+            {
+                DateTime today = DateTime.Now;
+                SqlDataReader reader = Connection.Select($"SELECT * FROM transactions JOIN categogies ON transactions.categogyName = categogies.categogyName WHERE username = '{this.user.Username}' AND transactionTime = '{today.ToString("yyyy-MM-dd")}'");
+                if (reader.HasRows) this.TodayTransactionPanel.Controls.Clear();
+                while (reader.Read())
+                {
+                    string date1 = reader.GetDateTime(7).ToString("yyyy-MM-dd");
+                    DateTime readerDate = DateTime.Parse(date1);
+                    TransactionModel transactionModel = new TransactionModel();
+                    transactionModel.Username = (string)reader["username"];
+                    transactionModel.WalletName = (string)reader["walletName"];
+                    transactionModel.Type = (string)reader["transactionType"];
+                    transactionModel.Value = (double)reader["transactionValue"];
+                    transactionModel.Note = (string)reader["transactionNote"];
+                    OverviewWallet transaction = new OverviewWallet(transactionModel.Type, this.user);
+                    transaction.Value.Text = String.Format("{0:n0}", transactionModel.Value);
+                    transaction.Wallet.Text = transactionModel.WalletName;
+                    transaction.Categogy.Image = ImageProccess.ByteToImage((byte[])reader["categogyImage"]);
+                    transaction.MouseClick += TransactionMenu_Click;
+                    this.TodayTransactionPanel.Controls.Add(transaction);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Connection.Close();
 
 
+        }
         private void WalletShowContent()
         {
             this.WalletContainer.Controls.Clear();
@@ -193,11 +267,7 @@ namespace BudgetManagement
             }
             Connection.Close();
         }
-        private void WalletMenu_Click(object sender, EventArgs e)
-        {
-            this.tabControl1.SelectedTab = this.WalletTab;
-            WalletShowContent();
-        }
+
 
         private void TransactionShowContent()
         {
@@ -208,7 +278,7 @@ namespace BudgetManagement
             TransactionContainer.HorizontalScroll.Maximum = 0;
             TransactionContainer.AutoScroll = true;
             Connection.Connect();
-            SqlDataReader reader = Connection.Select($"SELECT * FROM transactions JOIN categogies ON transactions.categogyName = categogies.categogyName WHERE username = '{this.user.Username}'");
+            SqlDataReader reader = Connection.Select($"SELECT * FROM transactions JOIN categogies ON transactions.categogyName = categogies.categogyName WHERE username = '{this.user.Username}' ORDER BY transactionTime DESC");
             try
             {
                 while (reader.Read())
@@ -225,6 +295,7 @@ namespace BudgetManagement
                     transaction.Value.Text = String.Format("{0:n0}", transactionModel.Value);
                     transaction.id = (int)reader["id"];
                     transaction.Wallet.Text = transactionModel.WalletName;
+                    transaction.note = (string)reader["transactionNote"];
                     transaction.Time.Text = transactionModel.Time.ToString("dd-MM-yyyy");
                     transaction.Categogy.Image = ImageProccess.ByteToImage((byte[])reader["categogyImage"]);
                     transaction.MouseClick += ModifyTransaction;
@@ -237,18 +308,23 @@ namespace BudgetManagement
             }
             Connection.Close();
         }
+        private void WalletMenu_Click(object sender, EventArgs e)
+        {
+            this.tabControl1.SelectedTab = this.WalletTab;
+            WalletShowContent();
+        }
         private void TransactionMenu_Click(object sender, EventArgs e)
         {
             this.tabControl1.SelectedTab = this.TransactionTab;
             TransactionShowContent();
         }
-        private void DebtMenu_Click(object sender, EventArgs e)
+        private void OverviewMenu_Click(object sender, EventArgs e)
         {
-            this.tabControl1.SelectedTab = this.DebtTab;
+            OverviewShowContent();
         }
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            WalletShowContent();
+            OverviewShowContent();
         }
         private void LogOutBtn_Click_1(object sender, EventArgs e)
         {

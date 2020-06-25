@@ -15,6 +15,7 @@ namespace BudgetManagement
         private string type;
         private UserModel user;
         public int id;
+        public string note;
         private Color IncomeColor = Color.FromArgb(133, 237, 137);
         private Color ExpenseColor = Color.FromArgb(243, 142, 135);
 

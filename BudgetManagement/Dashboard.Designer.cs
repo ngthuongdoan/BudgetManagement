@@ -29,8 +29,16 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.MenuPanel = new System.Windows.Forms.Panel();
-            this.DebtMenu = new System.Windows.Forms.Button();
+            this.OverviewMenu = new System.Windows.Forms.Button();
             this.TransactionMenu = new System.Windows.Forms.Button();
             this.WalletMenu = new System.Windows.Forms.Button();
             this.LogOutBtn = new System.Windows.Forms.Button();
@@ -43,19 +51,27 @@
             this.TransactionTab = new System.Windows.Forms.TabPage();
             this.AddTransactionBtn = new System.Windows.Forms.Button();
             this.TransactionContainer = new System.Windows.Forms.FlowLayoutPanel();
-            this.DebtTab = new System.Windows.Forms.TabPage();
+            this.OverviewTab = new System.Windows.Forms.TabPage();
             this.Avatar = new BudgetManagement.OvalPictureBox();
+            this.IncomeExpenseChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.CategogyChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.TodayTransactionPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.MenuPanel.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.WalletTab.SuspendLayout();
             this.TransactionTab.SuspendLayout();
+            this.OverviewTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Avatar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IncomeExpenseChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CategogyChart)).BeginInit();
+            this.TodayTransactionPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuPanel
             // 
             this.MenuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
-            this.MenuPanel.Controls.Add(this.DebtMenu);
+            this.MenuPanel.Controls.Add(this.OverviewMenu);
             this.MenuPanel.Controls.Add(this.TransactionMenu);
             this.MenuPanel.Controls.Add(this.WalletMenu);
             this.MenuPanel.Controls.Add(this.LogOutBtn);
@@ -65,24 +81,24 @@
             this.MenuPanel.Size = new System.Drawing.Size(200, 569);
             this.MenuPanel.TabIndex = 0;
             // 
-            // DebtMenu
+            // OverviewMenu
             // 
-            this.DebtMenu.FlatAppearance.BorderSize = 0;
-            this.DebtMenu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(170)))), ((int)(((byte)(59)))));
-            this.DebtMenu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
-            this.DebtMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DebtMenu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DebtMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DebtMenu.Location = new System.Drawing.Point(2, 275);
-            this.DebtMenu.Name = "DebtMenu";
-            this.DebtMenu.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.DebtMenu.Size = new System.Drawing.Size(197, 40);
-            this.DebtMenu.TabIndex = 4;
-            this.DebtMenu.Text = "Debts";
-            this.DebtMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DebtMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.DebtMenu.UseVisualStyleBackColor = true;
-            this.DebtMenu.Click += new System.EventHandler(this.DebtMenu_Click);
+            this.OverviewMenu.FlatAppearance.BorderSize = 0;
+            this.OverviewMenu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(170)))), ((int)(((byte)(59)))));
+            this.OverviewMenu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
+            this.OverviewMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OverviewMenu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OverviewMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.OverviewMenu.Location = new System.Drawing.Point(3, 212);
+            this.OverviewMenu.Name = "OverviewMenu";
+            this.OverviewMenu.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.OverviewMenu.Size = new System.Drawing.Size(197, 40);
+            this.OverviewMenu.TabIndex = 4;
+            this.OverviewMenu.Text = "Overview";
+            this.OverviewMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.OverviewMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.OverviewMenu.UseVisualStyleBackColor = true;
+            this.OverviewMenu.Click += new System.EventHandler(this.OverviewMenu_Click);
             // 
             // TransactionMenu
             // 
@@ -92,7 +108,7 @@
             this.TransactionMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TransactionMenu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TransactionMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.TransactionMenu.Location = new System.Drawing.Point(2, 228);
+            this.TransactionMenu.Location = new System.Drawing.Point(3, 292);
             this.TransactionMenu.Name = "TransactionMenu";
             this.TransactionMenu.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.TransactionMenu.Size = new System.Drawing.Size(197, 40);
@@ -111,7 +127,7 @@
             this.WalletMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.WalletMenu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WalletMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.WalletMenu.Location = new System.Drawing.Point(2, 181);
+            this.WalletMenu.Location = new System.Drawing.Point(3, 252);
             this.WalletMenu.Name = "WalletMenu";
             this.WalletMenu.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.WalletMenu.Size = new System.Drawing.Size(197, 40);
@@ -173,7 +189,7 @@
             this.tabControl1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tabControl1.Controls.Add(this.WalletTab);
             this.tabControl1.Controls.Add(this.TransactionTab);
-            this.tabControl1.Controls.Add(this.DebtTab);
+            this.tabControl1.Controls.Add(this.OverviewTab);
             this.tabControl1.Location = new System.Drawing.Point(196, -33);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(0, 0);
@@ -226,10 +242,10 @@
             this.TransactionTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.TransactionTab.Controls.Add(this.AddTransactionBtn);
             this.TransactionTab.Controls.Add(this.TransactionContainer);
-            this.TransactionTab.Location = new System.Drawing.Point(4, 34);
+            this.TransactionTab.Location = new System.Drawing.Point(4, 22);
             this.TransactionTab.Name = "TransactionTab";
             this.TransactionTab.Padding = new System.Windows.Forms.Padding(3);
-            this.TransactionTab.Size = new System.Drawing.Size(785, 637);
+            this.TransactionTab.Size = new System.Drawing.Size(785, 649);
             this.TransactionTab.TabIndex = 1;
             this.TransactionTab.Text = "tabPage2";
             // 
@@ -260,14 +276,17 @@
             this.TransactionContainer.Size = new System.Drawing.Size(782, 391);
             this.TransactionContainer.TabIndex = 8;
             // 
-            // DebtTab
+            // OverviewTab
             // 
-            this.DebtTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.DebtTab.Location = new System.Drawing.Point(4, 22);
-            this.DebtTab.Name = "DebtTab";
-            this.DebtTab.Size = new System.Drawing.Size(785, 649);
-            this.DebtTab.TabIndex = 2;
-            this.DebtTab.Text = "tabPage3";
+            this.OverviewTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.OverviewTab.Controls.Add(this.TodayTransactionPanel);
+            this.OverviewTab.Controls.Add(this.CategogyChart);
+            this.OverviewTab.Controls.Add(this.IncomeExpenseChart);
+            this.OverviewTab.Location = new System.Drawing.Point(4, 34);
+            this.OverviewTab.Name = "OverviewTab";
+            this.OverviewTab.Size = new System.Drawing.Size(785, 637);
+            this.OverviewTab.TabIndex = 2;
+            this.OverviewTab.Text = "tabPage3";
             // 
             // Avatar
             // 
@@ -280,6 +299,78 @@
             this.Avatar.TabIndex = 1;
             this.Avatar.TabStop = false;
             this.Avatar.Click += new System.EventHandler(this.Avatar_Click);
+            // 
+            // IncomeExpenseChart
+            // 
+            this.IncomeExpenseChart.BackImageTransparentColor = System.Drawing.Color.White;
+            this.IncomeExpenseChart.BackSecondaryColor = System.Drawing.Color.White;
+            this.IncomeExpenseChart.BorderSkin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(202)))), ((int)(((byte)(209)))));
+            this.IncomeExpenseChart.BorderSkin.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(202)))), ((int)(((byte)(209)))));
+            this.IncomeExpenseChart.BorderSkin.PageColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(202)))), ((int)(((byte)(209)))));
+            chartArea2.Name = "ChartArea1";
+            this.IncomeExpenseChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.IncomeExpenseChart.Legends.Add(legend2);
+            this.IncomeExpenseChart.Location = new System.Drawing.Point(34, 134);
+            this.IncomeExpenseChart.Name = "IncomeExpenseChart";
+            this.IncomeExpenseChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(202)))), ((int)(((byte)(209)))));
+            series2.Legend = "Legend1";
+            series2.Name = "Income";
+            series2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
+            this.IncomeExpenseChart.Series.Add(series2);
+            this.IncomeExpenseChart.Size = new System.Drawing.Size(237, 197);
+            this.IncomeExpenseChart.TabIndex = 0;
+            this.IncomeExpenseChart.Text = "Total Income-Expense";
+            title2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(202)))), ((int)(((byte)(209)))));
+            title2.BackSecondaryColor = System.Drawing.Color.White;
+            title2.BorderColor = System.Drawing.Color.Transparent;
+            title2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title2.Name = "Total Income-Expense";
+            title2.Text = "Total Income-Expense";
+            this.IncomeExpenseChart.Titles.Add(title2);
+            // 
+            // CategogyChart
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.CategogyChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.CategogyChart.Legends.Add(legend1);
+            this.CategogyChart.Location = new System.Drawing.Point(34, 337);
+            this.CategogyChart.Name = "CategogyChart";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.CategogyChart.Series.Add(series1);
+            this.CategogyChart.Size = new System.Drawing.Size(237, 197);
+            this.CategogyChart.TabIndex = 1;
+            this.CategogyChart.Text = "chart1";
+            title1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(202)))), ((int)(((byte)(209)))));
+            title1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.Name = "Title1";
+            title1.Text = "Total Expense per Category";
+            this.CategogyChart.Titles.Add(title1);
+            // 
+            // TodayTransactionPanel
+            // 
+            this.TodayTransactionPanel.BackColor = System.Drawing.Color.White;
+            this.TodayTransactionPanel.Controls.Add(this.label1);
+            this.TodayTransactionPanel.Location = new System.Drawing.Point(291, 134);
+            this.TodayTransactionPanel.Name = "TodayTransactionPanel";
+            this.TodayTransactionPanel.Size = new System.Drawing.Size(481, 414);
+            this.TodayTransactionPanel.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(208, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "No transactions today";
             // 
             // Dashboard
             // 
@@ -302,7 +393,12 @@
             this.tabControl1.ResumeLayout(false);
             this.WalletTab.ResumeLayout(false);
             this.TransactionTab.ResumeLayout(false);
+            this.OverviewTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Avatar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IncomeExpenseChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CategogyChart)).EndInit();
+            this.TodayTransactionPanel.ResumeLayout(false);
+            this.TodayTransactionPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -315,16 +411,20 @@
         private OvalPictureBox Avatar;
         private System.Windows.Forms.Label Username;
         private System.Windows.Forms.Button LogOutBtn;
-        private System.Windows.Forms.Button DebtMenu;
+        private System.Windows.Forms.Button OverviewMenu;
         private System.Windows.Forms.Button TransactionMenu;
         private System.Windows.Forms.Button WalletMenu;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage WalletTab;
         private System.Windows.Forms.TabPage TransactionTab;
-        private System.Windows.Forms.TabPage DebtTab;
+        private System.Windows.Forms.TabPage OverviewTab;
         private System.Windows.Forms.Button AddWalletBtn;
         private System.Windows.Forms.FlowLayoutPanel WalletContainer;
         private System.Windows.Forms.Button AddTransactionBtn;
         private System.Windows.Forms.FlowLayoutPanel TransactionContainer;
+        private System.Windows.Forms.DataVisualization.Charting.Chart CategogyChart;
+        private System.Windows.Forms.DataVisualization.Charting.Chart IncomeExpenseChart;
+        private System.Windows.Forms.FlowLayoutPanel TodayTransactionPanel;
+        private System.Windows.Forms.Label label1;
     }
 }
