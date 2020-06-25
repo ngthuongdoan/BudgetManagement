@@ -156,32 +156,212 @@ namespace BudgetManagement
                 }
             }
         }
-        private void OverviewShowContent()
+        private void IncomeChartTypeLoading(string type)
         {
-            this.tabControl1.SelectedTab = this.OverviewTab;
-            //INCOME_EXPENSE
             this.IncomeExpenseChart.Series.Clear();
             this.IncomeExpenseChart.Series.Add("MySeries");
             this.IncomeExpenseChart.Series["MySeries"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
             Connection.Connect();
-            double income=0, expense = 0;
+            double income = 0, expense = 0;
+            DateTime today = DateTime.Now;
+            int day = today.Day;
+            int month = today.Month;
+            int year = today.Year;
+            ArrayList validDate = new ArrayList();
+            Connection.Connect();
+            try
+            {
+                SqlDataReader reader = Connection.Select($"SELECT transactionTime FROM transactions WHERE username = '{this.user.Username}' AND transactionType='Income'");
+                while (reader.Read())
+                {
+                    string date1 = reader.GetDateTime(0).ToString("yyyy-MM-dd");
+                    switch (type)
+                    {
+                        case "yearly":
+                            if (DateTime.Parse(date1).Year == year) validDate.Add(DateTime.Parse(date1));
+                            break;
+                        case "monthly":
+                            if (DateTime.Parse(date1).Year == year && DateTime.Parse(date1).Month == month) validDate.Add(DateTime.Parse(date1));
+                            break;
+                        case "daily":
+                            if (DateTime.Parse(date1).Year == year && DateTime.Parse(date1).Month == month && DateTime.Parse(date1).Day == day) validDate.Add(DateTime.Parse(date1));
+                            break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            if (validDate.Count == 0) return;
+            DateTime minDate = DateTime.MaxValue;
+            DateTime maxDate = DateTime.MinValue;
+            foreach (DateTime date in validDate)
+            {
+                if (date < minDate)
+                    minDate = date;
+                if (date > maxDate)
+                    maxDate = date;
+            }
+            try
+            {
+                income = (double)Connection.SelectScalar(
+                    $"SELECT SUM(transactionValue) FROM transactions" +
+                    $" WHERE username = '{this.user.Username}' " +
+                    $"AND transactionType='Income' " +
+                    $"AND transactionTime BETWEEN '{minDate.ToString("yyyy-MM-dd")}' AND '{maxDate.ToString("yyyy-MM-dd")}'");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            validDate = new ArrayList();
+            try
+            {
+                SqlDataReader reader = Connection.Select($"SELECT transactionTime FROM transactions WHERE username = '{this.user.Username}' AND transactionType='Expense'");
+                while (reader.Read())
+                {
+                    string date1 = reader.GetDateTime(0).ToString("yyyy-MM-dd");
+                    switch (type)
+                    {
+                        case "yearly":
+                            if (DateTime.Parse(date1).Year == year) validDate.Add(DateTime.Parse(date1));
+                            break;
+                        case "monthly":
+                            if (DateTime.Parse(date1).Year == year && DateTime.Parse(date1).Month == month) validDate.Add(DateTime.Parse(date1));
+                            break;
+                        case "daily":
+                            if (DateTime.Parse(date1).Year == year && DateTime.Parse(date1).Month == month && DateTime.Parse(date1).Day == day) validDate.Add(DateTime.Parse(date1));
+                            break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            if (validDate.Count == 0) return;
+            minDate = DateTime.MaxValue;
+            maxDate = DateTime.MinValue;
+            foreach (DateTime date in validDate)
+            {
+                if (date < minDate)
+                    minDate = date;
+                if (date > maxDate)
+                    maxDate = date;
+            }
+            try
+            {
+                expense = -(double)Connection.SelectScalar(
+                    $"SELECT SUM(transactionValue) FROM transactions" +
+                    $" WHERE username = '{this.user.Username}' " +
+                    $"AND transactionType='Expense' " +
+                    $"AND transactionTime BETWEEN '{minDate.ToString("yyyy-MM-dd")}' AND '{maxDate.ToString("yyyy-MM-dd")}'");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Connection.Close();
+
+            this.IncomeExpenseChart.Series["MySeries"].Points.AddXY("Income", income);
+            this.IncomeExpenseChart.Series["MySeries"].Points.AddXY("Expense", expense);
+        }
+        private void IncomeChartAllLoading()
+        {
+            this.IncomeExpenseChart.Series.Clear();
+            this.IncomeExpenseChart.Series.Add("MySeries");
+            this.IncomeExpenseChart.Series["MySeries"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            Connection.Connect();
+            double income = 0, expense = 0;
             try
             {
                 income = (double)Connection.SelectScalar($"SELECT SUM(transactionValue) FROM transactions WHERE username = '{this.user.Username}' AND transactionType='Income'");
                 expense = -(double)Connection.SelectScalar($"SELECT SUM(transactionValue) FROM transactions WHERE username = '{this.user.Username}' AND transactionType='Expense'"); ;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-            
+
             Connection.Close();
             this.IncomeExpenseChart.Series["MySeries"].Points.AddXY("Income", income);
             this.IncomeExpenseChart.Series["MySeries"].Points.AddXY("Expense", expense);
-            //CATEGOGY
+        }
+        private void CategoryTypeLoading(string type)
+        {
             this.CategogyChart.Series.Clear();
             this.CategogyChart.Series.Add("MySeries");
             this.CategogyChart.Series["MySeries"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
             ArrayList AllCategory = new ArrayList();
+            DateTime today = DateTime.Now;
+            int day = today.Day;
+            int month = today.Month;
+            int year = today.Year;
+            ArrayList validDate = new ArrayList();
+            Connection.Connect();
+            try
+            {
+                SqlDataReader reader = Connection.Select($"SELECT categogyName,transactionTime FROM transactions WHERE username = '{this.user.Username}' AND transactionType='Expense'");
+                while (reader.Read())
+                {
+                    AllCategory.Add((string)reader["categogyName"]);
+                    string date1 = reader.GetDateTime(1).ToString("yyyy-MM-dd");
+                    switch (type)
+                    {
+                        case "yearly":
+                            if (DateTime.Parse(date1).Year == year) validDate.Add(DateTime.Parse(date1));
+                            break;
+                        case "monthly":
+                            if (DateTime.Parse(date1).Year == year && DateTime.Parse(date1).Month == month) validDate.Add(DateTime.Parse(date1));
+                            break;
+                        case "daily":
+                            if (DateTime.Parse(date1).Year == year && DateTime.Parse(date1).Month == month && DateTime.Parse(date1).Day == day) validDate.Add(DateTime.Parse(date1));
+                            break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Connection.Close();
+            if (validDate.Count == 0) return;
+            DateTime minDate = DateTime.MaxValue;
+            DateTime maxDate = DateTime.MinValue;
+            foreach (DateTime date in validDate)
+            {
+                if (date < minDate)
+                    minDate = date;
+                if (date > maxDate)
+                    maxDate = date;
+            }
+            Connection.Connect();
+            foreach (string category in AllCategory)
+            {
+                try
+                {
+                    double val = (double)Connection.SelectScalar(
+                    $"SELECT SUM(transactionValue) FROM transactions " +
+                    $"WHERE username = '{this.user.Username}' " +
+                    $"AND categogyName='{category}' " +
+                    $"AND transactionTime BETWEEN '{minDate.ToString("yyyy-MM-dd")}' AND '{maxDate.ToString("yyyy-MM-dd")}'");
+                    this.CategogyChart.Series["MySeries"].Points.AddXY(category, val);
+                }
+                catch
+                {
+                    //Error
+                };
+            }
+            Connection.Close();
+        }
+        private void CategoryAllLoading()
+        {
+            this.CategogyChart.Series.Clear();
+            this.CategogyChart.Series.Add("MySeries");
+            this.CategogyChart.Series["MySeries"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            ArrayList AllCategory = new ArrayList();
+
             Connection.Connect();
             try
             {
@@ -201,6 +381,18 @@ namespace BudgetManagement
                 this.CategogyChart.Series["MySeries"].Points.AddXY(categogy, val);
             }
             Connection.Close();
+        }
+        private void OverviewShowContent()
+        {
+            this.tabControl1.SelectedTab = this.OverviewTab;
+            this.FilterAllBtn.Checked = true;
+            this.FilterYearlyBtn.Checked = false;
+            this.FilterMonthlyBtn.Checked = false;
+            this.FilterDailyBtn.Checked = false;
+            //INCOME_EXPENSE
+            IncomeChartAllLoading();
+            //CATEGOGY
+            CategoryAllLoading();
             //TODAY TRANSACTION
             Connection.Connect();
             try
@@ -210,8 +402,6 @@ namespace BudgetManagement
                 if (reader.HasRows) this.TodayTransactionPanel.Controls.Clear();
                 while (reader.Read())
                 {
-                    string date1 = reader.GetDateTime(7).ToString("yyyy-MM-dd");
-                    DateTime readerDate = DateTime.Parse(date1);
                     TransactionModel transactionModel = new TransactionModel();
                     transactionModel.Username = (string)reader["username"];
                     transactionModel.WalletName = (string)reader["walletName"];
@@ -399,6 +589,46 @@ namespace BudgetManagement
                     Console.WriteLine(ex.Message);
                 }
             }
+        }
+
+        private void FilterAllBtn_Click(object sender, EventArgs e)
+        {
+            this.FilterAllBtn.Checked = true;
+            this.FilterYearlyBtn.Checked = false;
+            this.FilterMonthlyBtn.Checked = false;
+            this.FilterDailyBtn.Checked = false;
+            CategoryAllLoading();
+            IncomeChartAllLoading();
+        }
+
+        private void FilterYearlyBtn_Click(object sender, EventArgs e)
+        {
+            this.FilterAllBtn.Checked = false;
+            this.FilterYearlyBtn.Checked = true;
+            this.FilterMonthlyBtn.Checked = false;
+            this.FilterDailyBtn.Checked = false;
+            CategoryTypeLoading("yearly");
+            IncomeChartTypeLoading("yearly");
+        }
+
+        private void FilterMonthlyBtn_Click(object sender, EventArgs e)
+        {
+            this.FilterAllBtn.Checked = false;
+            this.FilterYearlyBtn.Checked = false;
+            this.FilterMonthlyBtn.Checked = true;
+            this.FilterDailyBtn.Checked = false;
+            CategoryTypeLoading("monthly");
+            IncomeChartTypeLoading("monthly");
+        }
+
+        private void FilterDailyBtn_Click(object sender, EventArgs e)
+        {
+            this.FilterAllBtn.Checked = false;
+            this.FilterYearlyBtn.Checked = false;
+            this.FilterMonthlyBtn.Checked = false;
+            this.FilterDailyBtn.Checked = true;
+            CategoryTypeLoading("daily");
+            IncomeChartTypeLoading("daily");
         }
     }
 }

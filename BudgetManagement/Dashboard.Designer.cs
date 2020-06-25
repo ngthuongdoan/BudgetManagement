@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.MenuPanel = new System.Windows.Forms.Panel();
             this.OverviewMenu = new System.Windows.Forms.Button();
             this.TransactionMenu = new System.Windows.Forms.Button();
@@ -52,20 +52,25 @@
             this.AddTransactionBtn = new System.Windows.Forms.Button();
             this.TransactionContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.OverviewTab = new System.Windows.Forms.TabPage();
-            this.Avatar = new BudgetManagement.OvalPictureBox();
-            this.IncomeExpenseChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.CategogyChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.TodayTransactionPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
+            this.CategogyChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.IncomeExpenseChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label2 = new System.Windows.Forms.Label();
+            this.FilterAllBtn = new System.Windows.Forms.RadioButton();
+            this.FilterMonthlyBtn = new System.Windows.Forms.RadioButton();
+            this.FilterYearlyBtn = new System.Windows.Forms.RadioButton();
+            this.FilterDailyBtn = new System.Windows.Forms.RadioButton();
+            this.Avatar = new BudgetManagement.OvalPictureBox();
             this.MenuPanel.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.WalletTab.SuspendLayout();
             this.TransactionTab.SuspendLayout();
             this.OverviewTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Avatar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IncomeExpenseChart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CategogyChart)).BeginInit();
             this.TodayTransactionPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CategogyChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IncomeExpenseChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Avatar)).BeginInit();
             this.SuspendLayout();
             // 
             // MenuPanel
@@ -279,6 +284,11 @@
             // OverviewTab
             // 
             this.OverviewTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.OverviewTab.Controls.Add(this.FilterDailyBtn);
+            this.OverviewTab.Controls.Add(this.FilterYearlyBtn);
+            this.OverviewTab.Controls.Add(this.FilterMonthlyBtn);
+            this.OverviewTab.Controls.Add(this.FilterAllBtn);
+            this.OverviewTab.Controls.Add(this.label2);
             this.OverviewTab.Controls.Add(this.TodayTransactionPanel);
             this.OverviewTab.Controls.Add(this.CategogyChart);
             this.OverviewTab.Controls.Add(this.IncomeExpenseChart);
@@ -288,17 +298,45 @@
             this.OverviewTab.TabIndex = 2;
             this.OverviewTab.Text = "tabPage3";
             // 
-            // Avatar
+            // TodayTransactionPanel
             // 
-            this.Avatar.BackColor = System.Drawing.Color.DarkGray;
-            this.Avatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Avatar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Avatar.Location = new System.Drawing.Point(159, 40);
-            this.Avatar.Name = "Avatar";
-            this.Avatar.Size = new System.Drawing.Size(80, 80);
-            this.Avatar.TabIndex = 1;
-            this.Avatar.TabStop = false;
-            this.Avatar.Click += new System.EventHandler(this.Avatar_Click);
+            this.TodayTransactionPanel.BackColor = System.Drawing.Color.White;
+            this.TodayTransactionPanel.Controls.Add(this.label1);
+            this.TodayTransactionPanel.Location = new System.Drawing.Point(3, 155);
+            this.TodayTransactionPanel.Name = "TodayTransactionPanel";
+            this.TodayTransactionPanel.Size = new System.Drawing.Size(472, 414);
+            this.TodayTransactionPanel.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(208, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "No transactions today";
+            // 
+            // CategogyChart
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.CategogyChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.CategogyChart.Legends.Add(legend1);
+            this.CategogyChart.Location = new System.Drawing.Point(521, 358);
+            this.CategogyChart.Name = "CategogyChart";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.CategogyChart.Series.Add(series1);
+            this.CategogyChart.Size = new System.Drawing.Size(237, 197);
+            this.CategogyChart.TabIndex = 1;
+            this.CategogyChart.Text = "chart1";
+            title1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(202)))), ((int)(((byte)(209)))));
+            title1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.Name = "Title1";
+            title1.Text = "Expense per Category";
+            this.CategogyChart.Titles.Add(title1);
             // 
             // IncomeExpenseChart
             // 
@@ -311,7 +349,7 @@
             this.IncomeExpenseChart.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.IncomeExpenseChart.Legends.Add(legend2);
-            this.IncomeExpenseChart.Location = new System.Drawing.Point(34, 134);
+            this.IncomeExpenseChart.Location = new System.Drawing.Point(521, 155);
             this.IncomeExpenseChart.Name = "IncomeExpenseChart";
             this.IncomeExpenseChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
             series2.ChartArea = "ChartArea1";
@@ -323,54 +361,110 @@
             this.IncomeExpenseChart.Series.Add(series2);
             this.IncomeExpenseChart.Size = new System.Drawing.Size(237, 197);
             this.IncomeExpenseChart.TabIndex = 0;
-            this.IncomeExpenseChart.Text = "Total Income-Expense";
+            this.IncomeExpenseChart.Text = "Income-Expense";
             title2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(202)))), ((int)(((byte)(209)))));
             title2.BackSecondaryColor = System.Drawing.Color.White;
             title2.BorderColor = System.Drawing.Color.Transparent;
             title2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             title2.Name = "Total Income-Expense";
-            title2.Text = "Total Income-Expense";
+            title2.Text = "Income-Expense";
             this.IncomeExpenseChart.Titles.Add(title2);
             // 
-            // CategogyChart
+            // label2
             // 
-            chartArea1.Name = "ChartArea1";
-            this.CategogyChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.CategogyChart.Legends.Add(legend1);
-            this.CategogyChart.Location = new System.Drawing.Point(34, 337);
-            this.CategogyChart.Name = "CategogyChart";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.CategogyChart.Series.Add(series1);
-            this.CategogyChart.Size = new System.Drawing.Size(237, 197);
-            this.CategogyChart.TabIndex = 1;
-            this.CategogyChart.Text = "chart1";
-            title1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(202)))), ((int)(((byte)(209)))));
-            title1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title1.Name = "Title1";
-            title1.Text = "Total Expense per Category";
-            this.CategogyChart.Titles.Add(title1);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(153, 127);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(212, 25);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "TODAY TRANSACTION";
             // 
-            // TodayTransactionPanel
+            // FilterAllBtn
             // 
-            this.TodayTransactionPanel.BackColor = System.Drawing.Color.White;
-            this.TodayTransactionPanel.Controls.Add(this.label1);
-            this.TodayTransactionPanel.Location = new System.Drawing.Point(291, 134);
-            this.TodayTransactionPanel.Name = "TodayTransactionPanel";
-            this.TodayTransactionPanel.Size = new System.Drawing.Size(481, 414);
-            this.TodayTransactionPanel.TabIndex = 2;
+            this.FilterAllBtn.Appearance = System.Windows.Forms.Appearance.Button;
+            this.FilterAllBtn.AutoSize = true;
+            this.FilterAllBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.FilterAllBtn.Checked = true;
+            this.FilterAllBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.FilterAllBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(142)))), ((int)(((byte)(168)))));
+            this.FilterAllBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
+            this.FilterAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FilterAllBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FilterAllBtn.Location = new System.Drawing.Point(529, 90);
+            this.FilterAllBtn.Name = "FilterAllBtn";
+            this.FilterAllBtn.Size = new System.Drawing.Size(34, 29);
+            this.FilterAllBtn.TabIndex = 4;
+            this.FilterAllBtn.Text = "All";
+            this.FilterAllBtn.UseVisualStyleBackColor = false;
+            this.FilterAllBtn.Click += new System.EventHandler(this.FilterAllBtn_Click);
             // 
-            // label1
+            // FilterMonthlyBtn
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(208, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "No transactions today";
+            this.FilterMonthlyBtn.Appearance = System.Windows.Forms.Appearance.Button;
+            this.FilterMonthlyBtn.AutoSize = true;
+            this.FilterMonthlyBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.FilterMonthlyBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.FilterMonthlyBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(142)))), ((int)(((byte)(168)))));
+            this.FilterMonthlyBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
+            this.FilterMonthlyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FilterMonthlyBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FilterMonthlyBtn.Location = new System.Drawing.Point(636, 90);
+            this.FilterMonthlyBtn.Name = "FilterMonthlyBtn";
+            this.FilterMonthlyBtn.Size = new System.Drawing.Size(58, 29);
+            this.FilterMonthlyBtn.TabIndex = 5;
+            this.FilterMonthlyBtn.Text = "Month";
+            this.FilterMonthlyBtn.UseVisualStyleBackColor = false;
+            this.FilterMonthlyBtn.Click += new System.EventHandler(this.FilterMonthlyBtn_Click);
+            // 
+            // FilterYearlyBtn
+            // 
+            this.FilterYearlyBtn.Appearance = System.Windows.Forms.Appearance.Button;
+            this.FilterYearlyBtn.AutoSize = true;
+            this.FilterYearlyBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.FilterYearlyBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.FilterYearlyBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(142)))), ((int)(((byte)(168)))));
+            this.FilterYearlyBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
+            this.FilterYearlyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FilterYearlyBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FilterYearlyBtn.Location = new System.Drawing.Point(577, 90);
+            this.FilterYearlyBtn.Name = "FilterYearlyBtn";
+            this.FilterYearlyBtn.Size = new System.Drawing.Size(45, 29);
+            this.FilterYearlyBtn.TabIndex = 6;
+            this.FilterYearlyBtn.Text = "Year";
+            this.FilterYearlyBtn.UseVisualStyleBackColor = false;
+            this.FilterYearlyBtn.Click += new System.EventHandler(this.FilterYearlyBtn_Click);
+            // 
+            // FilterDailyBtn
+            // 
+            this.FilterDailyBtn.Appearance = System.Windows.Forms.Appearance.Button;
+            this.FilterDailyBtn.AutoSize = true;
+            this.FilterDailyBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.FilterDailyBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.FilterDailyBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(142)))), ((int)(((byte)(168)))));
+            this.FilterDailyBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
+            this.FilterDailyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FilterDailyBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FilterDailyBtn.Location = new System.Drawing.Point(708, 90);
+            this.FilterDailyBtn.Name = "FilterDailyBtn";
+            this.FilterDailyBtn.Size = new System.Drawing.Size(42, 29);
+            this.FilterDailyBtn.TabIndex = 7;
+            this.FilterDailyBtn.Text = "Day";
+            this.FilterDailyBtn.UseVisualStyleBackColor = false;
+            this.FilterDailyBtn.Visible = false;
+            this.FilterDailyBtn.Click += new System.EventHandler(this.FilterDailyBtn_Click);
+            // 
+            // Avatar
+            // 
+            this.Avatar.BackColor = System.Drawing.Color.DarkGray;
+            this.Avatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Avatar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Avatar.Location = new System.Drawing.Point(159, 40);
+            this.Avatar.Name = "Avatar";
+            this.Avatar.Size = new System.Drawing.Size(80, 80);
+            this.Avatar.TabIndex = 1;
+            this.Avatar.TabStop = false;
+            this.Avatar.Click += new System.EventHandler(this.Avatar_Click);
             // 
             // Dashboard
             // 
@@ -394,11 +488,12 @@
             this.WalletTab.ResumeLayout(false);
             this.TransactionTab.ResumeLayout(false);
             this.OverviewTab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Avatar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IncomeExpenseChart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CategogyChart)).EndInit();
+            this.OverviewTab.PerformLayout();
             this.TodayTransactionPanel.ResumeLayout(false);
             this.TodayTransactionPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CategogyChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IncomeExpenseChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Avatar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -426,5 +521,10 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart IncomeExpenseChart;
         private System.Windows.Forms.FlowLayoutPanel TodayTransactionPanel;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RadioButton FilterDailyBtn;
+        private System.Windows.Forms.RadioButton FilterYearlyBtn;
+        private System.Windows.Forms.RadioButton FilterMonthlyBtn;
+        private System.Windows.Forms.RadioButton FilterAllBtn;
+        private System.Windows.Forms.Label label2;
     }
 }
