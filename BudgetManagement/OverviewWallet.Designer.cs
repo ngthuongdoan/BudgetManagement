@@ -69,7 +69,7 @@
             // 
             this.Type.Location = new System.Drawing.Point(342, 4);
             this.Type.Name = "Type";
-            this.Type.Size = new System.Drawing.Size(40, 40);
+            this.Type.Size = new System.Drawing.Size(50, 40);
             this.Type.TabIndex = 5;
             this.Type.TabStop = false;
             // 
