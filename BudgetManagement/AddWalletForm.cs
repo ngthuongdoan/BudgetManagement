@@ -21,10 +21,7 @@ namespace BudgetManagement
             InitializeComponent();
             Amount.Maximum = Decimal.MaxValue;
             Amount.Minimum = Decimal.MinValue;
-
         }
-
-
         private bool valid()
         {
             if (this.WalletName.Text == "") return false;
@@ -43,21 +40,22 @@ namespace BudgetManagement
                 this.DialogResult = DialogResult.None;
             }
         }
-
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.icon = this.pictureBox2.Image;
-        }
+            MessageBox.Show("You chose this", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+        }
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             this.icon = this.pictureBox3.Image;
+            MessageBox.Show("You chose this", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.icon = this.pictureBox1.Image;
+            MessageBox.Show("You chose this", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
     }
-
 }

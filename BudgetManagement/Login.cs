@@ -31,16 +31,6 @@ namespace BudgetManagement
             AdditionUI();
         }
 
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ClassStyle |= CS_DROPSHADOW;
-                return cp;
-            }
-        }
-
         private void Init()
         {
             this.LoginUsername.Text = "";
@@ -64,7 +54,7 @@ namespace BudgetManagement
 
         private void AdditionUI()
         {
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.BackColor = Color.FromArgb(243, 249, 254);
         }
 

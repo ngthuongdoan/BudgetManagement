@@ -232,6 +232,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(544, 463);
+            this.ControlBox = false;
             this.Controls.Add(this.categogyName);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.wallet);
@@ -249,7 +250,7 @@
             this.Controls.Add(this.SubmitBtn);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "AddTransactionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

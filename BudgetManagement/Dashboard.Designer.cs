@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.MenuPanel = new System.Windows.Forms.Panel();
             this.OverviewMenu = new System.Windows.Forms.Button();
             this.TransactionMenu = new System.Windows.Forms.Button();
@@ -52,15 +52,15 @@
             this.AddTransactionBtn = new System.Windows.Forms.Button();
             this.TransactionContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.OverviewTab = new System.Windows.Forms.TabPage();
+            this.FilterDailyBtn = new System.Windows.Forms.RadioButton();
+            this.FilterYearlyBtn = new System.Windows.Forms.RadioButton();
+            this.FilterMonthlyBtn = new System.Windows.Forms.RadioButton();
+            this.FilterAllBtn = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
             this.TodayTransactionPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.CategogyChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.IncomeExpenseChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.label2 = new System.Windows.Forms.Label();
-            this.FilterAllBtn = new System.Windows.Forms.RadioButton();
-            this.FilterMonthlyBtn = new System.Windows.Forms.RadioButton();
-            this.FilterYearlyBtn = new System.Windows.Forms.RadioButton();
-            this.FilterDailyBtn = new System.Windows.Forms.RadioButton();
             this.Avatar = new BudgetManagement.OvalPictureBox();
             this.MenuPanel.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -292,11 +292,96 @@
             this.OverviewTab.Controls.Add(this.TodayTransactionPanel);
             this.OverviewTab.Controls.Add(this.CategogyChart);
             this.OverviewTab.Controls.Add(this.IncomeExpenseChart);
-            this.OverviewTab.Location = new System.Drawing.Point(4, 34);
+            this.OverviewTab.Location = new System.Drawing.Point(4, 22);
             this.OverviewTab.Name = "OverviewTab";
-            this.OverviewTab.Size = new System.Drawing.Size(785, 637);
+            this.OverviewTab.Size = new System.Drawing.Size(785, 649);
             this.OverviewTab.TabIndex = 2;
             this.OverviewTab.Text = "tabPage3";
+            // 
+            // FilterDailyBtn
+            // 
+            this.FilterDailyBtn.Appearance = System.Windows.Forms.Appearance.Button;
+            this.FilterDailyBtn.AutoSize = true;
+            this.FilterDailyBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.FilterDailyBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.FilterDailyBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(142)))), ((int)(((byte)(168)))));
+            this.FilterDailyBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
+            this.FilterDailyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FilterDailyBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FilterDailyBtn.Location = new System.Drawing.Point(708, 90);
+            this.FilterDailyBtn.Name = "FilterDailyBtn";
+            this.FilterDailyBtn.Size = new System.Drawing.Size(42, 29);
+            this.FilterDailyBtn.TabIndex = 7;
+            this.FilterDailyBtn.Text = "Day";
+            this.FilterDailyBtn.UseVisualStyleBackColor = false;
+            this.FilterDailyBtn.Visible = false;
+            this.FilterDailyBtn.Click += new System.EventHandler(this.FilterDailyBtn_Click);
+            // 
+            // FilterYearlyBtn
+            // 
+            this.FilterYearlyBtn.Appearance = System.Windows.Forms.Appearance.Button;
+            this.FilterYearlyBtn.AutoSize = true;
+            this.FilterYearlyBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.FilterYearlyBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.FilterYearlyBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(142)))), ((int)(((byte)(168)))));
+            this.FilterYearlyBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
+            this.FilterYearlyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FilterYearlyBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FilterYearlyBtn.Location = new System.Drawing.Point(577, 90);
+            this.FilterYearlyBtn.Name = "FilterYearlyBtn";
+            this.FilterYearlyBtn.Size = new System.Drawing.Size(45, 29);
+            this.FilterYearlyBtn.TabIndex = 6;
+            this.FilterYearlyBtn.Text = "Year";
+            this.FilterYearlyBtn.UseVisualStyleBackColor = false;
+            this.FilterYearlyBtn.Click += new System.EventHandler(this.FilterYearlyBtn_Click);
+            // 
+            // FilterMonthlyBtn
+            // 
+            this.FilterMonthlyBtn.Appearance = System.Windows.Forms.Appearance.Button;
+            this.FilterMonthlyBtn.AutoSize = true;
+            this.FilterMonthlyBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.FilterMonthlyBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.FilterMonthlyBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(142)))), ((int)(((byte)(168)))));
+            this.FilterMonthlyBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
+            this.FilterMonthlyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FilterMonthlyBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FilterMonthlyBtn.Location = new System.Drawing.Point(636, 90);
+            this.FilterMonthlyBtn.Name = "FilterMonthlyBtn";
+            this.FilterMonthlyBtn.Size = new System.Drawing.Size(58, 29);
+            this.FilterMonthlyBtn.TabIndex = 5;
+            this.FilterMonthlyBtn.Text = "Month";
+            this.FilterMonthlyBtn.UseVisualStyleBackColor = false;
+            this.FilterMonthlyBtn.Click += new System.EventHandler(this.FilterMonthlyBtn_Click);
+            // 
+            // FilterAllBtn
+            // 
+            this.FilterAllBtn.Appearance = System.Windows.Forms.Appearance.Button;
+            this.FilterAllBtn.AutoSize = true;
+            this.FilterAllBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.FilterAllBtn.Checked = true;
+            this.FilterAllBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
+            this.FilterAllBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(142)))), ((int)(((byte)(168)))));
+            this.FilterAllBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
+            this.FilterAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FilterAllBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FilterAllBtn.Location = new System.Drawing.Point(529, 90);
+            this.FilterAllBtn.Name = "FilterAllBtn";
+            this.FilterAllBtn.Size = new System.Drawing.Size(34, 29);
+            this.FilterAllBtn.TabIndex = 4;
+            this.FilterAllBtn.TabStop = true;
+            this.FilterAllBtn.Text = "All";
+            this.FilterAllBtn.UseVisualStyleBackColor = false;
+            this.FilterAllBtn.Click += new System.EventHandler(this.FilterAllBtn_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(153, 127);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(212, 25);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "TODAY TRANSACTION";
             // 
             // TodayTransactionPanel
             // 
@@ -319,24 +404,24 @@
             // 
             // CategogyChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.CategogyChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.CategogyChart.Legends.Add(legend1);
+            chartArea5.Name = "ChartArea1";
+            this.CategogyChart.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.CategogyChart.Legends.Add(legend5);
             this.CategogyChart.Location = new System.Drawing.Point(521, 358);
             this.CategogyChart.Name = "CategogyChart";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.CategogyChart.Series.Add(series1);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.CategogyChart.Series.Add(series5);
             this.CategogyChart.Size = new System.Drawing.Size(237, 197);
             this.CategogyChart.TabIndex = 1;
             this.CategogyChart.Text = "chart1";
-            title1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(202)))), ((int)(((byte)(209)))));
-            title1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title1.Name = "Title1";
-            title1.Text = "Expense per Category";
-            this.CategogyChart.Titles.Add(title1);
+            title5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(202)))), ((int)(((byte)(209)))));
+            title5.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title5.Name = "Title1";
+            title5.Text = "Expense per Category";
+            this.CategogyChart.Titles.Add(title5);
             // 
             // IncomeExpenseChart
             // 
@@ -345,114 +430,30 @@
             this.IncomeExpenseChart.BorderSkin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(202)))), ((int)(((byte)(209)))));
             this.IncomeExpenseChart.BorderSkin.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(202)))), ((int)(((byte)(209)))));
             this.IncomeExpenseChart.BorderSkin.PageColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(202)))), ((int)(((byte)(209)))));
-            chartArea2.Name = "ChartArea1";
-            this.IncomeExpenseChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.IncomeExpenseChart.Legends.Add(legend2);
+            chartArea6.Name = "ChartArea1";
+            this.IncomeExpenseChart.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.IncomeExpenseChart.Legends.Add(legend6);
             this.IncomeExpenseChart.Location = new System.Drawing.Point(521, 155);
             this.IncomeExpenseChart.Name = "IncomeExpenseChart";
             this.IncomeExpenseChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(202)))), ((int)(((byte)(209)))));
-            series2.Legend = "Legend1";
-            series2.Name = "Income";
-            series2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
-            this.IncomeExpenseChart.Series.Add(series2);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series6.Color = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(202)))), ((int)(((byte)(209)))));
+            series6.Legend = "Legend1";
+            series6.Name = "Income";
+            series6.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
+            this.IncomeExpenseChart.Series.Add(series6);
             this.IncomeExpenseChart.Size = new System.Drawing.Size(237, 197);
             this.IncomeExpenseChart.TabIndex = 0;
             this.IncomeExpenseChart.Text = "Income-Expense";
-            title2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(202)))), ((int)(((byte)(209)))));
-            title2.BackSecondaryColor = System.Drawing.Color.White;
-            title2.BorderColor = System.Drawing.Color.Transparent;
-            title2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title2.Name = "Total Income-Expense";
-            title2.Text = "Income-Expense";
-            this.IncomeExpenseChart.Titles.Add(title2);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(153, 127);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(212, 25);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "TODAY TRANSACTION";
-            // 
-            // FilterAllBtn
-            // 
-            this.FilterAllBtn.Appearance = System.Windows.Forms.Appearance.Button;
-            this.FilterAllBtn.AutoSize = true;
-            this.FilterAllBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.FilterAllBtn.Checked = true;
-            this.FilterAllBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.FilterAllBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(142)))), ((int)(((byte)(168)))));
-            this.FilterAllBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
-            this.FilterAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FilterAllBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FilterAllBtn.Location = new System.Drawing.Point(529, 90);
-            this.FilterAllBtn.Name = "FilterAllBtn";
-            this.FilterAllBtn.Size = new System.Drawing.Size(34, 29);
-            this.FilterAllBtn.TabIndex = 4;
-            this.FilterAllBtn.Text = "All";
-            this.FilterAllBtn.UseVisualStyleBackColor = false;
-            this.FilterAllBtn.Click += new System.EventHandler(this.FilterAllBtn_Click);
-            // 
-            // FilterMonthlyBtn
-            // 
-            this.FilterMonthlyBtn.Appearance = System.Windows.Forms.Appearance.Button;
-            this.FilterMonthlyBtn.AutoSize = true;
-            this.FilterMonthlyBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.FilterMonthlyBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.FilterMonthlyBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(142)))), ((int)(((byte)(168)))));
-            this.FilterMonthlyBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
-            this.FilterMonthlyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FilterMonthlyBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FilterMonthlyBtn.Location = new System.Drawing.Point(636, 90);
-            this.FilterMonthlyBtn.Name = "FilterMonthlyBtn";
-            this.FilterMonthlyBtn.Size = new System.Drawing.Size(58, 29);
-            this.FilterMonthlyBtn.TabIndex = 5;
-            this.FilterMonthlyBtn.Text = "Month";
-            this.FilterMonthlyBtn.UseVisualStyleBackColor = false;
-            this.FilterMonthlyBtn.Click += new System.EventHandler(this.FilterMonthlyBtn_Click);
-            // 
-            // FilterYearlyBtn
-            // 
-            this.FilterYearlyBtn.Appearance = System.Windows.Forms.Appearance.Button;
-            this.FilterYearlyBtn.AutoSize = true;
-            this.FilterYearlyBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.FilterYearlyBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.FilterYearlyBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(142)))), ((int)(((byte)(168)))));
-            this.FilterYearlyBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
-            this.FilterYearlyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FilterYearlyBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FilterYearlyBtn.Location = new System.Drawing.Point(577, 90);
-            this.FilterYearlyBtn.Name = "FilterYearlyBtn";
-            this.FilterYearlyBtn.Size = new System.Drawing.Size(45, 29);
-            this.FilterYearlyBtn.TabIndex = 6;
-            this.FilterYearlyBtn.Text = "Year";
-            this.FilterYearlyBtn.UseVisualStyleBackColor = false;
-            this.FilterYearlyBtn.Click += new System.EventHandler(this.FilterYearlyBtn_Click);
-            // 
-            // FilterDailyBtn
-            // 
-            this.FilterDailyBtn.Appearance = System.Windows.Forms.Appearance.Button;
-            this.FilterDailyBtn.AutoSize = true;
-            this.FilterDailyBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.FilterDailyBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(245)))));
-            this.FilterDailyBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(142)))), ((int)(((byte)(168)))));
-            this.FilterDailyBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(212)))), ((int)(((byte)(37)))));
-            this.FilterDailyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FilterDailyBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FilterDailyBtn.Location = new System.Drawing.Point(708, 90);
-            this.FilterDailyBtn.Name = "FilterDailyBtn";
-            this.FilterDailyBtn.Size = new System.Drawing.Size(42, 29);
-            this.FilterDailyBtn.TabIndex = 7;
-            this.FilterDailyBtn.Text = "Day";
-            this.FilterDailyBtn.UseVisualStyleBackColor = false;
-            this.FilterDailyBtn.Visible = false;
-            this.FilterDailyBtn.Click += new System.EventHandler(this.FilterDailyBtn_Click);
+            title6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(202)))), ((int)(((byte)(209)))));
+            title6.BackSecondaryColor = System.Drawing.Color.White;
+            title6.BorderColor = System.Drawing.Color.Transparent;
+            title6.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title6.Name = "Total Income-Expense";
+            title6.Text = "Income-Expense";
+            this.IncomeExpenseChart.Titles.Add(title6);
             // 
             // Avatar
             // 
@@ -477,6 +478,7 @@
             this.Controls.Add(this.MenuPanel);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Dashboard";

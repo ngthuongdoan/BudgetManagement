@@ -88,6 +88,10 @@ namespace BudgetManagement
                 transaction.WalletName = this.wallet.Text;
                 this.DialogResult = DialogResult.OK;
             }
+            else
+            {
+                this.DialogResult = DialogResult.None;
+            }
         }
     }
 }
